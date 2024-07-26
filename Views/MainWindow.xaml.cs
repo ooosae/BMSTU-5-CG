@@ -13,7 +13,6 @@ namespace CourseCG.Views
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine(12);
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
             RenderScene();
@@ -33,10 +32,6 @@ namespace CourseCG.Views
                     double[] direction = { (x * 1.0 / width - 0.5) * _viewModel.Camera.RotX,
                        (y * 1.0 / height + 0.5) * _viewModel.Camera.RotY,
                         _viewModel.Camera.RotZ };
-
-                    Console.WriteLine($"Direction: {direction[0]}, {direction[1]}, {direction[2]}");
-                    Console.WriteLine($"Camera Position: {_viewModel.Camera.PosX}, {_viewModel.Camera.PosY}, {_viewModel.Camera.PosZ}");
-
 
                     IntersectionService.NormalizeVector(direction);
                     Color color = RayTracingService.TraceRay(_viewModel.Scene,

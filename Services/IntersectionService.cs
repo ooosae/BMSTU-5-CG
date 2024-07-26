@@ -7,19 +7,24 @@ namespace CourseCG.Services
     {
         public static void ClosestIntersection(Scene scene, double[] camera, double[] direction, double tMin, double tMax, ref double closestT, ref Sphere closestSphere)
         {
+            Console.WriteLine("ClosestIntersection called");
             foreach (var sphere in scene.Spheres)
             {
                 double t1, t2;
                 IntersectRaySphere(camera, direction, sphere, out t1, out t2);
+                Console.WriteLine($"Sphere at ({sphere.XCenter}, {sphere.YCenter}, {sphere.ZCenter}) with radius {sphere.Radius}");
+                Console.WriteLine($"t1 = {t1}, t2 = {t2}");
                 if (tMin <= t1 && t1 <= tMax && t1 < closestT)
                 {
                     closestT = t1;
                     closestSphere = sphere;
+                    Console.WriteLine($"New closest sphere at t1 = {t1}");
                 }
                 if (tMin <= t2 && t2 <= tMax && t2 < closestT)
                 {
                     closestT = t2;
                     closestSphere = sphere;
+                    Console.WriteLine($"New closest sphere at t2 = {t2}");
                 }
             }
         }
@@ -36,6 +41,9 @@ namespace CourseCG.Services
             double c = cx * cx + cy * cy + cz * cz - r * r;
 
             double discriminant = b * b - 4 * a * c;
+
+            Console.WriteLine($"a = {a}, b = {b}, c = {c}, discriminant = {discriminant}");
+
             if (discriminant < 0)
             {
                 t1 = double.PositiveInfinity;
@@ -43,8 +51,19 @@ namespace CourseCG.Services
             }
             else
             {
-                t1 = (-b + Math.Sqrt(discriminant)) / (2.0 * a);
-                t2 = (-b - Math.Sqrt(discriminant)) / (2.0 * a);
+                double sqrtDiscriminant = Math.Sqrt(discriminant);
+                if (double.IsNaN(sqrtDiscriminant))
+                {
+                    t1 = double.PositiveInfinity;
+                    t2 = double.PositiveInfinity;
+                    Console.WriteLine("sqrtDiscriminant is NaN");
+                }
+                else
+                {
+                    t1 = (-b - sqrtDiscriminant) / (2.0 * a);
+                    t2 = (-b + sqrtDiscriminant) / (2.0 * a);
+                    Console.WriteLine($"sqrtDiscriminant = {sqrtDiscriminant}, t1 = {t1}, t2 = {t2}");
+                }
             }
         }
 
@@ -66,7 +85,6 @@ namespace CourseCG.Services
                 vector[2] /= length;
             }
         }
-
 
         public static double DotProduct(double[] v1, double[] v2)
         {

@@ -8,11 +8,19 @@ namespace CourseCG.Services
     {
         public static Color TraceRay(Scene scene, double[] camera, double[] direction, double tMin, double tMax, int recursionDepth)
         {
+            Console.WriteLine("TraceRay called");
             double closestT = double.PositiveInfinity;
             Sphere closestSphere = null;
             IntersectionService.ClosestIntersection(scene, camera, direction, tMin, tMax, ref closestT, ref closestSphere);
             if (closestSphere == null)
+            {
+                Debug.WriteLine("No intersection found");
                 return Colors.LightGray;
+            }
+            else
+            {
+                Console.WriteLine($"Intersection found at t = {closestT}");
+            }
 
             double[] intersectionPoint = { camera[0] + closestT * direction[0], camera[1] + closestT * direction[1], camera[2] + closestT * direction[2] };
             double[] normal = { intersectionPoint[0] - closestSphere.XCenter, intersectionPoint[1] - closestSphere.YCenter, intersectionPoint[2] - closestSphere.ZCenter };
