@@ -1,0 +1,12 @@
+﻿<Window x:Class="CourseCG.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseCG"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1400">
+    <Grid x:Name="MainScene" Background="#FF1E1E1E" Margin="0,0,0,-6">
+        <Image x:Name="RenderImage" HorizontalAlignment="Left" Height="746" Margin="542,10,0,0" VerticalAlignment="Top" Width="835"/>
+    </Grid>
+</Window>
