@@ -30,7 +30,7 @@ namespace CourseCG.Views
                 for (int x = 0; x < width; x++)
                 {
                     double[] direction = { (x * 1.0 / width - 0.5) * _viewModel.Camera.RotX,
-                       (y * 1.0 / height + 0.5) * _viewModel.Camera.RotY,
+                       (-y * 1.0 / height + 0.5) * _viewModel.Camera.RotY,
                         _viewModel.Camera.RotZ };
 
                     IntersectionService.NormalizeVector(direction);

@@ -33,8 +33,10 @@ namespace CourseCG.ViewModels
             {
                 Spheres = new ObservableCollection<Sphere>
                 {
-                   new Sphere { Radius = 1, XCenter = 0, YCenter = 0, ZCenter = 5, Color = Colors.Red, Specular = 500, Reflective = 0.5 }
-                    // Add more spheres
+                   new Sphere { Radius = 1, XCenter = 0, YCenter = -1, ZCenter = 3, Color = Colors.Red, Specular = 500, Reflective = 0.2 },
+                   new Sphere { Radius = 1, XCenter = 2, YCenter = 0, ZCenter = 4, Color = Colors.Yellow, Specular = 500, Reflective = 0.3},
+                   new Sphere { Radius = 1, XCenter = -2, YCenter = 0, ZCenter = 4, Color = Colors.Blue, Specular = 10, Reflective = 0.4},
+                   new Sphere {Radius = 5000, XCenter = 0, YCenter = -5001, ZCenter = 0, Color = Colors.Green, Specular = 0, Reflective = 0}
                 },
                 Lights = new Light
                 {
@@ -56,11 +58,11 @@ namespace CourseCG.ViewModels
             Camera = new Camera
             {
                 PosX = 0,
-                PosY = 0,
-                PosZ = -5,
-                RotX = 0,
-                RotY = 0,
-                RotZ = 0
+                PosY = 0.5,
+                PosZ = 10,
+                RotX = -1,
+                RotY = 1,
+                RotZ = -1
             };
         }
     }

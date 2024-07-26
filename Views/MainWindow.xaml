@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1400">
     <Grid x:Name="MainScene" Background="#FF1E1E1E" Margin="0,0,0,-6">
-        <Image x:Name="RenderImage" HorizontalAlignment="Left" Height="746" Margin="542,10,0,0" VerticalAlignment="Top" Width="835"/>
+        <Image x:Name="RenderImage" HorizontalAlignment="Left" Height="746" Margin="632,10,0,0" VerticalAlignment="Top" Width="746" OpacityMask="White"/>
     </Grid>
 </Window>

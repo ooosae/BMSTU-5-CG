@@ -39,3 +39,4 @@ C:\Users\theca\OneDrive\Рабочий стол\КУРСОВАЯ РАБОТА\pr
 C:\Users\theca\OneDrive\Рабочий стол\КУРСОВАЯ РАБОТА\project\bmstu-cg-course\obj\Debug\net8.0-windows\CourseCG.pdb
 C:\Users\theca\OneDrive\Рабочий стол\КУРСОВАЯ РАБОТА\project\bmstu-cg-course\obj\Debug\net8.0-windows\CourseCG.genruntimeconfig.cache
 C:\Users\theca\OneDrive\Рабочий стол\КУРСОВАЯ РАБОТА\project\bmstu-cg-course\obj\Debug\net8.0-windows\ref\CourseCG.dll
+C:\Users\theca\source\repos\CourseCG\CourseCG\obj\Debug\net8.0-windows\CourseCG.sourcelink.json

@@ -45,7 +45,8 @@ namespace CourseCG.Services
                 }
             }
 
-            return diffuseIntensity + specularIntensity;
+            return Math.Max(0, Math.Min(1, diffuseIntensity + specularIntensity));
         }
+
     }
 }
