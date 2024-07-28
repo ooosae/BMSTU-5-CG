@@ -48,11 +48,10 @@ namespace CourseCG.Services
 
         private static Color AdjustReflection(Color localColor, Color reflectionColor, double reflectivity)
         {
-            byte r = (byte)Math.Min(255, Math.Max(0, localColor.B * (1 - reflectivity) + reflectionColor.B * reflectivity));
+            byte r = (byte)Math.Min(255, Math.Max(0, localColor.R * (1 - reflectivity) + reflectionColor.R * reflectivity));
             byte g = (byte)Math.Min(255, Math.Max(0, localColor.G * (1 - reflectivity) + reflectionColor.G * reflectivity));
-            byte b = (byte)Math.Min(255, Math.Max(0, localColor.R * (1 - reflectivity) + reflectionColor.R * reflectivity));
-            return System.Windows.Media.Color.FromRgb(r, g, b);
+            byte b = (byte)Math.Min(255, Math.Max(0, localColor.B * (1 - reflectivity) + reflectionColor.B * reflectivity));
+            return Color.FromRgb(r, g, b);
         }
-
     }
 }

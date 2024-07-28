@@ -4,9 +4,163 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseCG"
+        xmlns:converters="clr-namespace:CourseCG.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1400">
+    <Window.Resources>
+        <converters:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    </Window.Resources>
     <Grid x:Name="MainScene" Background="#FF1E1E1E" Margin="0,0,0,-6">
         <Image x:Name="RenderImage" HorizontalAlignment="Left" Height="746" Margin="632,10,0,0" VerticalAlignment="Top" Width="746" OpacityMask="White"/>
+        <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="600">
+            <TextBlock Text="Сферы" FontWeight="Bold" Foreground="White" Height="19"/>
+            <!-- Заголовки -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Центр" Width="200" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Радиус" Width="100" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Цвет" Width="100" FontWeight="Bold" Foreground="White"/>
+            </StackPanel>
+            <!-- Список сфер -->
+            <ListBox x:Name="SpheresListBox" ItemsSource="{Binding Scene.Spheres}" HorizontalAlignment="Left" Height="162" Width="600" Background="#FF686868" Foreground="White">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding XCenter, StringFormat='X: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding YCenter, StringFormat='Y: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding ZCenter, StringFormat='Z: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding Radius}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <Rectangle Width="65" Height="20" Fill="{Binding Color, Converter={StaticResource ColorToBrushConverter}}" VerticalAlignment="Center"/>
+                            <Button Content="Загрузить текстуру"
+                                    Command="{Binding DataContext.LoadTextureCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    CommandParameter="{Binding}"
+                                    Width="150"
+                                    Margin="5,0,0,0"
+                                    Background="Gray"
+                                    Foreground="White"/>
+                            <Button Content="Удалить сферу"
+                                    Command="{Binding DataContext.DeleteSphereCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    CommandParameter="{Binding}"
+                                    Width="100"
+                                    Margin="5,0,0,0"
+                                    Background="Gray"
+                                    Foreground="White"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!-- Кнопки управления -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button Content="Загрузить сферу" Command="{Binding AddSphereCommand}" Width="150" Margin="5"/>
+                <Button Content="Удалить все сферы" Command="{Binding ClearSceneCommand}" Width="150" Margin="5"/>
+            </StackPanel>
+            <!-- Список источников света -->
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock Text="Источники света" FontWeight="Bold" Foreground="White" Height="25"/>
+                <!-- Ambient Light ListBox -->
+                <TextBlock Text="Рассеянный свет" FontWeight="Bold" Foreground="White" Height="18"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Интенсивность" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="" Width="100" FontWeight="Bold" Foreground="White"/>
+                </StackPanel>
+                <ListBox x:Name="AmbientLightsListBox" ItemsSource="{Binding Scene.Lights.Ambient}" HorizontalAlignment="Left" Height="44" Width="600" Background="#FF686868" Foreground="White">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Intensity}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <Button Content="Удалить"
+                                        Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Width="100"
+                                        Margin="5,0,0,0"
+                                        Background="Gray"
+                                        Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Text="Точечный свет" FontWeight="Bold" Foreground="White" Height="20"/>
+                <!-- Point Light ListBox -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Интенсивность" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПозицияX" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПозицияY" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПозицияZ" Width="100" FontWeight="Bold" Foreground="White"/>
+                </StackPanel>
+                <ListBox x:Name="PointLightsListBox" ItemsSource="{Binding Scene.Lights.Point}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Intensity}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding PositionX}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding PositionY}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding PositionZ}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <Button Content="Удалить"
+                                        Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Width="100"
+                                        Margin="5,0,0,0"
+                                        Background="Gray"
+                                        Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!-- Directional Light ListBox -->
+                <TextBlock Text="Направленный свет" FontWeight="Bold" Foreground="White" Height="21"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Интенсивность" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПоворотX" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПоворотY" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="ПоворотZ" Width="100" FontWeight="Bold" Foreground="White"/>
+                </StackPanel>
+                <ListBox x:Name="DirectionalLightsListBox" ItemsSource="{Binding Scene.Lights.Directional}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Intensity}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding DirectionX}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding DirectionY}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding DirectionZ}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <Button Content="Удалить"
+                                        Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Width="100"
+                                        Margin="5,0,0,0"
+                                        Background="Gray"
+                                        Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!-- Кнопки добавления света -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Добавить рассеянный свет" Command="{Binding AddLightCommand}" CommandParameter="Ambient" Width="170" Margin="5"/>
+                    <Button Content="Добавить точечный свет" Command="{Binding AddLightCommand}" CommandParameter="Point" Width="170" Margin="5"/>
+                    <Button Content="Добавить направленный свет" Command="{Binding AddLightCommand}" CommandParameter="Directional" Width="170" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+            <!-- Кнопки управления камерой -->
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                <TextBlock Text="Управление камерой" FontWeight="Bold" Foreground="White"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Вверх" Command="{Binding MoveCameraUpCommand}" Width="100" Margin="5"/>
+                    <Button Content="Влево" Command="{Binding MoveCameraLeftCommand}" Width="100" Margin="5"/>
+                    <Button Content="Ближе" Command="{Binding MoveCameraCloserCommand}" Width="100" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Вниз" Command="{Binding MoveCameraDownCommand}" Width="100" Margin="5"/>
+                    <Button Content="Вправо" Command="{Binding MoveCameraRightCommand}" Width="100" Margin="5"/>
+                    <Button Content="Дальше" Command="{Binding MoveCameraFurtherCommand}" Width="100" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Повернуть влево" Command="{Binding RotateCameraLeftCommand}" Width="150" Margin="5"/>
+                    <Button Content="Повернуть вправо" Command="{Binding RotateCameraRightCommand}" Width="150" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Повернуть вниз" Command="{Binding RotateCameraDownCommand}" Width="150" Margin="5"/>
+                    <Button Content="Повернуть вверх" Command="{Binding RotateCameraUpCommand}" Width="150" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

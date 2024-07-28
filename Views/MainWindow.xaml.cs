@@ -1,6 +1,7 @@
 ﻿using CourseCG.Services;
 using CourseCG.ViewModels;
 using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -15,6 +16,7 @@ namespace CourseCG.Views
             InitializeComponent();
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
+            _viewModel.SceneChanged += RenderScene;
             RenderScene();
         }
 
@@ -25,27 +27,51 @@ namespace CourseCG.Views
 
             var bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgr32, null);
 
-            for (int y = 0; y < height; y++)
+            double cosY = Math.Cos(_viewModel.Camera.RotY);
+            double sinY = Math.Sin(_viewModel.Camera.RotY);
+            double cosX = Math.Cos(_viewModel.Camera.RotX);
+            double sinX = Math.Sin(_viewModel.Camera.RotX);
+
+            int[] pixels = new int[width * height];
+
+            Parallel.For(0, height, y =>
             {
                 for (int x = 0; x < width; x++)
                 {
-                    double[] direction = { (x * 1.0 / width - 0.5) * _viewModel.Camera.RotX,
-                       (-y * 1.0 / height + 0.5) * _viewModel.Camera.RotY,
-                        _viewModel.Camera.RotZ };
+                    double[] defaultDirection = { (x * 1.0 / width - 0.5) * 2, (-y * 1.0 / height + 0.5) * 2, -1 };
 
-                    IntersectionService.NormalizeVector(direction);
-                    Color color = RayTracingService.TraceRay(_viewModel.Scene,
+                    double[] rotatedDirectionY = {
+                        defaultDirection[0] * cosY - defaultDirection[2] * sinY,
+                        defaultDirection[1],
+                        defaultDirection[0] * sinY + defaultDirection[2] * cosY
+                    };
+
+                    double[] finalDirection = {
+                        rotatedDirectionY[0],
+                        rotatedDirectionY[1] * cosX - rotatedDirectionY[2] * sinX,
+                        rotatedDirectionY[1] * sinX + rotatedDirectionY[2] * cosX
+                    };
+
+                    IntersectionService.NormalizeVector(finalDirection);
+
+                    Color color = RayTracingService.TraceRay(
+                        _viewModel.Scene,
                         new double[] { _viewModel.Camera.PosX, _viewModel.Camera.PosY, _viewModel.Camera.PosZ },
-                        direction, 0.001, double.PositiveInfinity, 3);
-                    bitmap.SetPixelColor(x, y, color);
+                        finalDirection, 0.001, double.PositiveInfinity, 3);
+
+                    int pixelColor = (color.R << 16) | (color.G << 8) | color.B;
+
+                    pixels[y * width + x] = pixelColor;
                 }
-            }
+            });
+
+            bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0);
 
             RenderImage.Source = bitmap;
         }
     }
 
-    public static class BitmapExtensions
+        public static class BitmapExtensions
     {
         public static void SetPixelColor(this WriteableBitmap wb, int x, int y, Color color)
         {
