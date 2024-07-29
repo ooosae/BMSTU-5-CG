@@ -1,10 +1,12 @@
 ﻿using CourseCG.Models;
-using CourseCG.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 
 namespace CourseCG.ViewModels
@@ -16,7 +18,7 @@ namespace CourseCG.ViewModels
         private Sphere _selectedSphere;
         private string _lightTypeToAdd;
 
-        public event Action SceneChanged;
+        public event EventHandler<EventArgs> SceneChanged;
 
         public MainViewModel()
         {
@@ -36,6 +38,7 @@ namespace CourseCG.ViewModels
             RotateCameraRightCommand = new RelayCommand(_ => RotateCameraRight());
             RotateCameraUpCommand = new RelayCommand(_ => RotateCameraUp());
             RotateCameraDownCommand = new RelayCommand(_ => RotateCameraDown());
+            LoadTextureCommand = new RelayCommand<Sphere>(async sphere => await LoadTextureAsync(sphere));
         }
 
         public Scene Scene
@@ -83,6 +86,7 @@ namespace CourseCG.ViewModels
         public ICommand RotateCameraRightCommand { get; }
         public ICommand RotateCameraUpCommand { get; }
         public ICommand RotateCameraDownCommand { get; }
+        public ICommand LoadTextureCommand { get; }
 
         private void LoadScene()
         {
@@ -122,7 +126,7 @@ namespace CourseCG.ViewModels
                 RotZ = 1
             };
 
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void SetLightTypeAndAdd(object parameter)
@@ -134,7 +138,7 @@ namespace CourseCG.ViewModels
             }
         }
 
-        private void AddSphere()
+        private async void AddSphere()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -143,7 +147,7 @@ namespace CourseCG.ViewModels
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string[] lines = File.ReadAllLines(openFileDialog.FileName);
+                string[] lines = await Task.Run(() => File.ReadAllLines(openFileDialog.FileName));
                 foreach (string line in lines)
                 {
                     string[] parts = line.Split(' ');
@@ -171,7 +175,7 @@ namespace CourseCG.ViewModels
                         Scene.Spheres.Add(sphere);
                     }
                 }
-                SceneChanged?.Invoke();
+                SceneChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -185,14 +189,14 @@ namespace CourseCG.ViewModels
             if (parameter is Sphere sphere && Scene.Spheres.Contains(sphere))
             {
                 Scene.Spheres.Remove(sphere);
-                SceneChanged?.Invoke();
+                SceneChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
         private void ClearScene()
         {
             Scene.Spheres.Clear();
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddLight()
@@ -248,9 +252,49 @@ namespace CourseCG.ViewModels
                             break;
                     }
                 }
-                SceneChanged?.Invoke();
+                SceneChanged?.Invoke(this, EventArgs.Empty);
             }
         }
+
+        private async Task LoadTextureAsync(Sphere sphere)
+        {
+            if (sphere == null)
+                return;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image files (*.png;*.jpg)|*.png;*.jpg"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string texturePath = openFileDialog.FileName;
+                BitmapImage bitmap = new BitmapImage();
+
+                await Task.Run(() =>
+                {
+                    using (var stream = new FileStream(texturePath, FileMode.Open, FileAccess.Read))
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            bitmap.BeginInit();
+                            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                            bitmap.StreamSource = stream;
+                            bitmap.EndInit();
+                            bitmap.Freeze();
+                        });
+                    }
+                });
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    sphere.Texture = bitmap;
+                });
+
+                SceneChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
 
         private bool CanDeleteLight(object parameter)
         {
@@ -280,67 +324,67 @@ namespace CourseCG.ViewModels
                     }
                     break;
             }
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraUp()
         {
             Camera.PosY += 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraDown()
         {
             Camera.PosY -= 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraLeft()
         {
             Camera.PosX -= 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraRight()
         {
             Camera.PosX += 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraCloser()
         {
             Camera.PosZ -= 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraFurther()
         {
             Camera.PosZ += 1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraLeft()
         {
             Camera.RotY -= 0.1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraRight()
         {
             Camera.RotY += 0.1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraUp()
         {
             Camera.RotX += 0.1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraDown()
         {
             Camera.RotX -= 0.1;
-            SceneChanged?.Invoke();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

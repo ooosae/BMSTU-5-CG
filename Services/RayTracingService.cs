@@ -1,19 +1,21 @@
 ﻿using CourseCG.Models;
-using System.Diagnostics;
+using System;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace CourseCG.Services
 {
     public static class RayTracingService
     {
-        public static Color TraceRay(Scene scene, double[] camera, double[] direction, double tMin, double tMax, int recursionDepth)
+        public static async Task<Color> TraceRayAsync(Scene scene, double[] camera, double[] direction, double tMin, double tMax, int recursionDepth)
         {
             double closestT = double.PositiveInfinity;
             Sphere closestSphere = null;
             IntersectionService.ClosestIntersection(scene, camera, direction, tMin, tMax, ref closestT, ref closestSphere);
             if (closestSphere == null)
             {
-                return Color.FromRgb(200, 200, 200);
+                return Colors.LightGray;
             }
 
             double[] intersectionPoint = { camera[0] + closestT * direction[0], camera[1] + closestT * direction[1], camera[2] + closestT * direction[2] };
@@ -22,7 +24,9 @@ namespace CourseCG.Services
 
             double[] viewDirection = { -direction[0], -direction[1], -direction[2] };
             double intensity = LightService.ComputeLighting(scene, intersectionPoint, normal, viewDirection, closestSphere.Specular);
-            Color localColor = AdjustIntensity(closestSphere.Color, intensity);
+            Color localColor = closestSphere.Texture != null
+                ? await GetColorFromTextureAsync(closestSphere, intersectionPoint)
+                : AdjustIntensity(closestSphere.Color, intensity);
 
             double reflectivity = closestSphere.Reflective;
             if (recursionDepth <= 0 || reflectivity <= 0)
@@ -32,13 +36,36 @@ namespace CourseCG.Services
 
             double[] reflectionDirection = new double[3];
             IntersectionService.ReflectRay(viewDirection, normal, reflectionDirection);
-            Color reflectionColor = TraceRay(scene, intersectionPoint, reflectionDirection, 0.001, double.PositiveInfinity, recursionDepth - 1);
+
+            Color reflectionColor = await TraceRayAsync(scene, intersectionPoint, reflectionDirection, 0.001, double.PositiveInfinity, recursionDepth - 1);
             Color finalColor = AdjustReflection(localColor, reflectionColor, reflectivity);
 
             return finalColor;
         }
 
-       private static Color AdjustIntensity(Color color, double intensity)
+
+        private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, double[] point)
+        {
+            double u = 0.5 + (Math.Atan2(point[2] - sphere.ZCenter, point[0] - sphere.XCenter) / (2 * Math.PI));
+            double v = 0.5 - (Math.Asin((point[1] - sphere.YCenter) / sphere.Radius) / Math.PI);
+
+            int x = 0;
+            int y = 0;
+            var pixels = new byte[4];
+
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                x = (int)(u * sphere.Texture.PixelWidth);
+                y = (int)(v * sphere.Texture.PixelHeight);
+
+                sphere.Texture.CopyPixels(new Int32Rect(x, y, 1, 1), pixels, 4, 0);
+            });
+
+            return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
+        }
+
+
+        private static Color AdjustIntensity(Color color, double intensity)
         {
             byte r = (byte)Math.Min(255, Math.Max(0, color.R * intensity));
             byte g = (byte)Math.Min(255, Math.Max(0, color.G * intensity));
