@@ -1,8 +1,6 @@
 ﻿using CourseCG.Models;
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -217,7 +215,7 @@ namespace CourseCG.ViewModels
                         case "Ambient":
                             if (parts.Length == 1 && double.TryParse(parts[0], out double ambientIntensity))
                             {
-                                Scene.Lights.Ambient.Add(new AmbientLight { Intensity = ambientIntensity });
+                                Scene.Lights.Ambient?.Add(new AmbientLight { Intensity = ambientIntensity });
                             }
                             break;
                         case "Point":
@@ -226,7 +224,7 @@ namespace CourseCG.ViewModels
                                 double.TryParse(parts[2], out double pointY) &&
                                 double.TryParse(parts[3], out double pointZ))
                             {
-                                Scene.Lights.Point.Add(new PointLight
+                                Scene.Lights.Point?.Add(new PointLight
                                 {
                                     Intensity = pointIntensity,
                                     PositionX = pointX,
@@ -241,7 +239,7 @@ namespace CourseCG.ViewModels
                                 double.TryParse(parts[2], out double dirY) &&
                                 double.TryParse(parts[3], out double dirZ))
                             {
-                                Scene.Lights.Directional.Add(new DirectionalLight
+                                Scene.Lights.Directional?.Add(new DirectionalLight
                                 {
                                     Intensity = dirIntensity,
                                     DirectionX = dirX,

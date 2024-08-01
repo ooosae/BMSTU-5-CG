@@ -25,8 +25,8 @@ namespace CourseCG.Models
 
     public class Light
     {
-        public ObservableCollection<PointLight> Point { get; set; }
-        public ObservableCollection<AmbientLight> Ambient { get; set; }
-        public ObservableCollection<DirectionalLight> Directional { get; set; }
+        public ObservableCollection<PointLight>? Point { get; set; }
+        public ObservableCollection<AmbientLight>? Ambient { get; set; }
+        public ObservableCollection<DirectionalLight>? Directional { get; set; }
     }
 }

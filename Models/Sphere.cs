@@ -12,6 +12,6 @@ namespace CourseCG.Models
         public Color Color { get; set; }
         public double Specular { get; set; }
         public double Reflective { get; set; }
-        public BitmapImage Texture { get; set; }
+        public BitmapImage? Texture { get; set; }
     }
 }

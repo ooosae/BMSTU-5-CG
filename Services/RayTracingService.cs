@@ -1,5 +1,4 @@
 ﻿using CourseCG.Models;
-using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -11,7 +10,7 @@ namespace CourseCG.Services
         public static async Task<Color> TraceRayAsync(Scene scene, double[] camera, double[] direction, double tMin, double tMax, int recursionDepth)
         {
             double closestT = double.PositiveInfinity;
-            Sphere closestSphere = null;
+            Sphere? closestSphere = null;
             IntersectionService.ClosestIntersection(scene, camera, direction, tMin, tMax, ref closestT, ref closestSphere);
             if (closestSphere == null)
             {
@@ -22,11 +21,16 @@ namespace CourseCG.Services
             double[] normal = { intersectionPoint[0] - closestSphere.XCenter, intersectionPoint[1] - closestSphere.YCenter, intersectionPoint[2] - closestSphere.ZCenter };
             IntersectionService.NormalizeVector(normal);
 
+            if (closestSphere.Texture != null)
+            {
+                Color textureColor = await GetColorFromTextureAsync(closestSphere, normal);
+                normal = AdjustNormalWithTexture(closestSphere.Texture, normal, textureColor);
+                IntersectionService.NormalizeVector(normal);
+            }
+
             double[] viewDirection = { -direction[0], -direction[1], -direction[2] };
             double intensity = LightService.ComputeLighting(scene, intersectionPoint, normal, viewDirection, closestSphere.Specular);
-            Color localColor = closestSphere.Texture != null
-                ? await GetColorFromTextureAsync(closestSphere, intersectionPoint)
-                : AdjustIntensity(closestSphere.Color, intensity);
+            Color localColor = AdjustIntensity(closestSphere.Color, intensity);
 
             double reflectivity = closestSphere.Reflective;
             if (recursionDepth <= 0 || reflectivity <= 0)
@@ -43,27 +47,25 @@ namespace CourseCG.Services
             return finalColor;
         }
 
-
-        private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, double[] point)
+        private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, double[] normal)
         {
-            double u = 0.5 + (Math.Atan2(point[2] - sphere.ZCenter, point[0] - sphere.XCenter) / (2 * Math.PI));
-            double v = 0.5 - (Math.Asin((point[1] - sphere.YCenter) / sphere.Radius) / Math.PI);
+            double u = 0;
+            double v = 0;
 
-            int x = 0;
-            int y = 0;
+            ComputeTextureCoordinates(normal, ref u, ref v);
+
+            int x = (int)(u * sphere.Texture?.PixelWidth??0);
+            int y = (int)(v * sphere.Texture?.PixelHeight??0);
+
             var pixels = new byte[4];
 
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                x = (int)(u * sphere.Texture.PixelWidth);
-                y = (int)(v * sphere.Texture.PixelHeight);
-
-                sphere.Texture.CopyPixels(new Int32Rect(x, y, 1, 1), pixels, 4, 0);
+                sphere.Texture?.CopyPixels(new Int32Rect(x, y, 1, 1), pixels, 4, 0);
             });
 
             return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
         }
-
 
         private static Color AdjustIntensity(Color color, double intensity)
         {
@@ -79,6 +81,34 @@ namespace CourseCG.Services
             byte g = (byte)Math.Min(255, Math.Max(0, localColor.G * (1 - reflectivity) + reflectionColor.G * reflectivity));
             byte b = (byte)Math.Min(255, Math.Max(0, localColor.B * (1 - reflectivity) + reflectionColor.B * reflectivity));
             return Color.FromRgb(r, g, b);
+        }
+
+        private static void ComputeTextureCoordinates(double[] normal, ref double u, ref double v)
+        {
+            double phi = Math.Atan2(normal[1], normal[0]);
+            double theta = Math.Acos(normal[2]);
+
+            u = (phi + Math.PI) / (2.0 * Math.PI);
+            v = theta / Math.PI;
+        }
+
+        private static double[] AdjustNormalWithTexture(BitmapSource texture, double[] normal, Color textureColor)
+        {
+            double Bu = textureColor.R / 255.0;
+            double Bv = textureColor.G / 255.0;
+            double[] Nb = { Bu, Bv, 1 };
+            IntersectionService.NormalizeVector(Nb);
+
+            double[] T = new double[3];
+            IntersectionService.Cross(normal, Nb, ref T);
+            IntersectionService.NormalizeVector(T);
+
+            double[] B = new double[3];
+            IntersectionService.Cross(normal, T, ref B);
+            IntersectionService.NormalizeVector(B);
+
+            double[] Nt = { IntersectionService.DotProduct(T, Nb), IntersectionService.DotProduct(B, Nb), IntersectionService.DotProduct(normal, Nb) };
+            return new double[] { normal[0] + Nt[0], normal[1] + Nt[1], normal[2] + Nt[2] };
         }
     }
 }

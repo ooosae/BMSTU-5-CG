@@ -77,10 +77,16 @@ namespace CourseCG.Services
                 vector[2] /= length;
             }
         }
-
         public static double DotProduct(double[] v1, double[] v2)
         {
             return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+        }
+
+        public static void Cross(double[]  v1,double[] v2, ref double[] v_res)
+        {
+            v_res[0] = v1[1] * v2[2] - v1[2] * v2[1];
+            v_res[1] = v1[2] * v2[0] - v1[0] * v2[2];
+            v_res[2] = v1[0] * v2[1] - v1[1] * v2[0];
         }
     }
 }
