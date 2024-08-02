@@ -1,0 +1,124 @@
+\usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[utf8]{inputenc} % Кодировка utf8
+\usepackage[T2A]{fontenc} % Поддержка русских букв
+\usepackage[english,russian]{babel} % Языки: русский, английский
+%\usepackage{pscyr} % Нормальные шрифты
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage[justification=centering]{caption}
+\usepackage[group-separator={,}]{siunitx}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+
+% \usepackage[
+% singlelinecheck=false % <-- important
+% ]{caption}
+
+% объявляем новую команду для переноса строки внутри ячейки таблицы
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\usepackage{caption}
+\captionsetup{labelsep=endash}
+\captionsetup[figure]{name={Рисунок}}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{left=30mm}
+\geometry{right=10mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalsize\bfseries}
+{\thesection}
+{1em}{}
+\titlespacing*{\chapter}{0pt}{-30pt}{8pt}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+
+\usepackage{setspace}
+\onehalfspacing % Полуторный интервал
+
+\frenchspacing
+\usepackage{indentfirst} % Красная строка
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{20pt}{\LARGE\bfseries}
+\titleformat{\section}{\Large\bfseries}{\thesection}{20pt}{\Large\bfseries}
+% \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{color}
+
+%\renewcommand{\thechapter}{\arabic{chapter}.}
+%\renewcommand{\thesection}{\thechapter\arabic{section}.}
+%\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand\thefigure{\arabic{chapter}.\arabic{figure}}
+\renewcommand\thetable{\arabic{chapter}.\arabic{table}}
+\AtBeginDocument{
+	\renewcommand\thelstlisting{\arabic{chapter}.\arabic{lstlisting}}
+}
+
+\lstset{ %
+	language=C++,                 % выбор языка для подсветки (здесь это С++)
+	basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+	numbers=left,               % где поставить нумерацию строк (слева\справа)
+	numberstyle=\tiny,           % размер шрифта для номеров строк
+	stepnumber=1,                   % размер шага между двумя номерами строк
+	numbersep=5pt,                % как далеко отстоят номера строк от подсвечиваемого кода
+	showspaces=false,            % показывать или нет пробелы специальными отступами
+	showstringspaces=false,      % показывать или нет пробелы в строках
+	showtabs=false,             % показывать или нет табуляцию в строках
+	frame=single,              % рисовать рамку вокруг кода
+	tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+	captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+	breaklines=true,           % автоматически переносить строки (да\нет)
+	breakatwhitespace=false, % переносить строки только если есть пробел
+	escapeinside={\#*}{*)} ,  % если нужно добавить комментарии в коде
+	keywordstyle=\color{purple},          % Стиль ключевых слов
+	commentstyle=\color{dkgreen},       % Стиль комментариев
+	stringstyle=\color{mauve}          % Стиль литералов
+}
+
+
+\usepackage{pgfplots}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+
+\usepackage{graphicx}
+\newcommand{\img}[3] {
+	\begin{figure}[h!]
+		\center{\includegraphics[height=#1]{assets/img/#2}}
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+\newcommand{\boximg}[3] {
+	\begin{figure}[h]
+		\center{\fbox{\includegraphics[height=#1]{assets/img/#2}}}
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+
+\usepackage[singlelinecheck=false]{caption} % Настройка подписей float объектов
+
+\usepackage[unicode,pdftex]{hyperref} % Ссылки в pdf
+\hypersetup{hidelinks}
+
+\usepackage{csvsimple}
+
+\makeatletter
+\def\@biblabel#1{#1. }
+\makeatother
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\addto\captionsrussian{\renewcommand{\bibname}{Список использованных источников}}

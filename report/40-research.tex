@@ -1,0 +1,88 @@
+\chapter{Исследовательская часть}
+
+В данном разделе  приведены технические характеристики устройства, на котором проводился анализ производительности, а также результаты работы программного обеспечения.
+
+\section{Технические характеристики}
+
+Технические характеристики устройства, на котором выполнялось исследование, следующие.
+
+\begin{itemize}[label=---]
+	\item Операционная система Windows 11 \cite{linux}.
+	\item Оперативная память: 16 ГБ.
+	\item Процессор: Intel(R) Core(TM) i7-10700F CPU @ 2.90 ГГц \cite{intel}.
+	\item Количество ядер: 8 физических и 16 логических.
+\end{itemize}
+
+\section{Результаты работы ПО}
+
+На рисунках \ref{img:ex1} -- \ref{img:ex4} представлены изображения, полученные с помощью разработанного ПО.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{1\linewidth}}
+		\centering
+		\includegraphics[width=0.7\linewidth]{include/ex1.png}
+		\captionof{figure}{Изображение №1, полученное с помощью разработанного ПО}
+		\label{img:ex1}
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{1\linewidth}}
+		\centering
+		\includegraphics[width=0.8\linewidth]{include/ex2.png}
+		\captionof{figure}{Изображение №2, полученное с помощью разработанного ПО}
+		\label{img:ex2}
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{1\linewidth}}
+		\centering
+		\includegraphics[width=0.8\linewidth]{include/ex3.png}
+		\captionof{figure}{Изображение №3, полученное с помощью разработанного ПО}
+		\label{img:ex3}
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{1\linewidth}}
+		\centering
+		\includegraphics[width=0.8\linewidth]{include/ex4.png}
+		\captionof{figure}{Изображение №4, полученное с помощью разработанного ПО}
+		\label{img:ex4}
+	\end{tabular}
+\end{table}
+
+\section{Анализ производительности}
+
+Производительность будет оцениваться мерой количества кадров в секунду (FPS). Она будет меняться в зависимости от размера ткани. Количество кадров в секунду было замерено с помощью модуля \textit{Stats}. Результаты приведены в таблице \ref{tbl:profilingalgs1}. 
+
+\begin{table}[H]
+	\begin{center}
+		\caption{\label{tbl:profilingalgs1} Производительность ПО при разном размере тканевой сетки.}
+		\begin{tabular}{|c|c|}
+			\hline
+			\specialcell{Линейный размер ткани, частиц} & \specialcell{FPS}
+			\\ 
+			
+			\hline
+			100 & \num{60} \\ \hline
+			500 & \num{60} \\ \hline
+			1000 & \num{60} \\ \hline
+			1500 & \num{60} \\ \hline
+			2000 & \num{54} \\ \hline
+			2500 & \num{49} \\ \hline
+			5000 & \num{27} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Исходя из результатов, можно заметить понижение количества кадров в секунду при большом размере тканевой сетки. Это происходит в силу большой вычислительной нагрузки, так как требуется расчет траектории для каждой частицы ткани.
+
+\section*{Вывод}
+\addcontentsline{toc}{section}{Вывод}
+В данном разделе приведен анализ производительности, а также результат работы программного обеспечения. В ходе анализа было установлено, что количество кадров в секунду уменьшается с увеличением размера ткани.
