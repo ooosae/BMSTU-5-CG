@@ -11,12 +11,12 @@ namespace CourseCG.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private Scene _scene;
-        private Camera _camera;
-        private Sphere _selectedSphere;
-        private string _lightTypeToAdd;
+        private Scene _scene = new Scene();
+        private Camera _camera = new Camera();
+        private Sphere _selectedSphere = new Sphere();
+        private string _lightTypeToAdd = string.Empty;
 
-        public event EventHandler<EventArgs> SceneChanged;
+        public event EventHandler<EventArgs>? SceneChanged;
 
         public MainViewModel()
         {
@@ -127,7 +127,7 @@ namespace CourseCG.ViewModels
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private void SetLightTypeAndAdd(object parameter)
+        private void SetLightTypeAndAdd(object? parameter)
         {
             if (parameter is string lightType)
             {
@@ -177,12 +177,12 @@ namespace CourseCG.ViewModels
             }
         }
 
-        private bool CanDeleteSphere(object parameter)
+        private bool CanDeleteSphere(object? parameter)
         {
             return parameter is Sphere;
         }
 
-        private void DeleteSphere(object parameter)
+        private void DeleteSphere(object? parameter)
         {
             if (parameter is Sphere sphere && Scene.Spheres.Contains(sphere))
             {
@@ -254,7 +254,7 @@ namespace CourseCG.ViewModels
             }
         }
 
-        private async Task LoadTextureAsync(Sphere sphere)
+        private async Task LoadTextureAsync(Sphere? sphere)
         {
             if (sphere == null)
                 return;
@@ -294,29 +294,29 @@ namespace CourseCG.ViewModels
         }
 
 
-        private bool CanDeleteLight(object parameter)
+        private bool CanDeleteLight(object? parameter)
         {
             return parameter is AmbientLight || parameter is PointLight || parameter is DirectionalLight;
         }
 
-        private void DeleteLight(object parameter)
+        private void DeleteLight(object? parameter)
         {
             switch (parameter)
             {
                 case AmbientLight ambientLight:
-                    if (Scene.Lights.Ambient.Contains(ambientLight))
+                    if (Scene.Lights.Ambient != null && Scene.Lights.Ambient.Contains(ambientLight))
                     {
                         Scene.Lights.Ambient.Remove(ambientLight);
                     }
                     break;
                 case PointLight pointLight:
-                    if (Scene.Lights.Point.Contains(pointLight))
+                    if (Scene.Lights.Point != null && Scene.Lights.Point.Contains(pointLight))
                     {
                         Scene.Lights.Point.Remove(pointLight);
                     }
                     break;
                 case DirectionalLight directionalLight:
-                    if (Scene.Lights.Directional.Contains(directionalLight))
+                    if (Scene.Lights.Directional != null && Scene.Lights.Directional.Contains(directionalLight))
                     {
                         Scene.Lights.Directional.Remove(directionalLight);
                     }
