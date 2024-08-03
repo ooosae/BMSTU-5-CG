@@ -1,5 +1,4 @@
 ﻿using CourseCG.Models;
-using System;
 
 namespace CourseCG.Services
 {

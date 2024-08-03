@@ -44,9 +44,7 @@ namespace CourseCG.Services
                     specularIntensity = Math.Pow(spec, specular) * lightIntensity;
                 }
             }
-
             return Math.Max(0, Math.Min(1, diffuseIntensity + specularIntensity));
         }
-
     }
 }

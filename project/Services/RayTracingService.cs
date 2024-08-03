@@ -47,6 +47,22 @@ namespace CourseCG.Services
             return finalColor;
         }
 
+        private static Color AdjustIntensity(Color color, double intensity)
+        {
+            byte r = (byte)Math.Min(255, Math.Max(0, color.R * intensity));
+            byte g = (byte)Math.Min(255, Math.Max(0, color.G * intensity));
+            byte b = (byte)Math.Min(255, Math.Max(0, color.B * intensity));
+            return Color.FromRgb(r, g, b);
+        }
+
+        private static Color AdjustReflection(Color localColor, Color reflectionColor, double reflectivity)
+        {
+            byte r = (byte)Math.Min(255, Math.Max(0, localColor.R * (1 - reflectivity) + reflectionColor.R * reflectivity));
+            byte g = (byte)Math.Min(255, Math.Max(0, localColor.G * (1 - reflectivity) + reflectionColor.G * reflectivity));
+            byte b = (byte)Math.Min(255, Math.Max(0, localColor.B * (1 - reflectivity) + reflectionColor.B * reflectivity));
+            return Color.FromRgb(r, g, b);
+        }
+
         private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, double[] normal)
         {
             double u = 0;
@@ -65,22 +81,6 @@ namespace CourseCG.Services
             });
 
             return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
-        }
-
-        private static Color AdjustIntensity(Color color, double intensity)
-        {
-            byte r = (byte)Math.Min(255, Math.Max(0, color.R * intensity));
-            byte g = (byte)Math.Min(255, Math.Max(0, color.G * intensity));
-            byte b = (byte)Math.Min(255, Math.Max(0, color.B * intensity));
-            return Color.FromRgb(r, g, b);
-        }
-
-        private static Color AdjustReflection(Color localColor, Color reflectionColor, double reflectivity)
-        {
-            byte r = (byte)Math.Min(255, Math.Max(0, localColor.R * (1 - reflectivity) + reflectionColor.R * reflectivity));
-            byte g = (byte)Math.Min(255, Math.Max(0, localColor.G * (1 - reflectivity) + reflectionColor.G * reflectivity));
-            byte b = (byte)Math.Min(255, Math.Max(0, localColor.B * (1 - reflectivity) + reflectionColor.B * reflectivity));
-            return Color.FromRgb(r, g, b);
         }
 
         private static void ComputeTextureCoordinates(double[] normal, ref double u, ref double v)

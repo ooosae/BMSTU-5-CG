@@ -27,9 +27,9 @@ Reallocating 'name_of_file' (item size: 1) to 10 items.
 Reallocating 'name_of_file' (item size: 1) to 19 items.
 A level-1 auxiliary file: 60-application.aux
 I found no style file---while reading file report.aux
-You've used 6 entries,
+You've used 2 entries,
             0 wiz_defined-function locations,
-            100 strings with 661 characters,
+            96 strings with 642 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0

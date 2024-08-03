@@ -12,6 +12,8 @@
 \usepackage[group-separator={,}]{siunitx}
 \usepackage{pdfpages}
 \usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
 
 % \usepackage[
 % singlelinecheck=false % <-- important
@@ -67,26 +69,23 @@
 }
 
 \lstset{ %
-	language=C++,                 % выбор языка для подсветки (здесь это С++)
-	basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
-	numbers=left,               % где поставить нумерацию строк (слева\справа)
-	numberstyle=\tiny,           % размер шрифта для номеров строк
-	stepnumber=1,                   % размер шага между двумя номерами строк
-	numbersep=5pt,                % как далеко отстоят номера строк от подсвечиваемого кода
-	showspaces=false,            % показывать или нет пробелы специальными отступами
-	showstringspaces=false,      % показывать или нет пробелы в строках
-	showtabs=false,             % показывать или нет табуляцию в строках
-	frame=single,              % рисовать рамку вокруг кода
-	tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
-	captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
-	breaklines=true,           % автоматически переносить строки (да\нет)
-	breakatwhitespace=false, % переносить строки только если есть пробел
-	escapeinside={\#*}{*)} ,  % если нужно добавить комментарии в коде
-	keywordstyle=\color{purple},          % Стиль ключевых слов
-	commentstyle=\color{dkgreen},       % Стиль комментариев
-	stringstyle=\color{mauve}          % Стиль литералов
+	language=[Sharp]C,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{gray}\itshape,
+	stringstyle=\color{red},
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=10pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	frame=single,
+	tabsize=2,
+	breaklines=true,
+	breakatwhitespace=false,
+	morekeywords={partial, var, yield, get, set, async, await}
 }
-
 
 \usepackage{pgfplots}
 \usetikzlibrary{datavisualization}
