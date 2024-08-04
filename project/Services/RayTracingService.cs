@@ -1,4 +1,5 @@
 ﻿using CourseCG.Models;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -7,28 +8,27 @@ namespace CourseCG.Services
 {
     public static class RayTracingService
     {
-        public static async Task<Color> TraceRayAsync(Scene scene, double[] camera, double[] direction, double tMin, double tMax, int recursionDepth)
+        public static async Task<Color> TraceRayAsync(Scene scene, Vector3 camera, Vector3 direction, double tMin, double tMax, int recursionDepth)
         {
-            double closestT = double.PositiveInfinity;
-            Sphere? closestSphere = null;
-            IntersectionService.ClosestIntersection(scene, camera, direction, tMin, tMax, ref closestT, ref closestSphere);
+            IntersectionService.ClosestIntersection(scene, camera, direction, tMin, tMax, out double closestT, out Sphere? closestSphere);
+
             if (closestSphere == null)
             {
                 return Colors.LightGray;
             }
 
-            double[] intersectionPoint = { camera[0] + closestT * direction[0], camera[1] + closestT * direction[1], camera[2] + closestT * direction[2] };
-            double[] normal = { intersectionPoint[0] - closestSphere.XCenter, intersectionPoint[1] - closestSphere.YCenter, intersectionPoint[2] - closestSphere.ZCenter };
-            IntersectionService.NormalizeVector(normal);
+            Vector3 intersectionPoint = camera + direction * closestT;
+            Vector3 normal = intersectionPoint - closestSphere.Center;
+            normal.Normalize();
 
             if (closestSphere.Texture != null)
             {
                 Color textureColor = await GetColorFromTextureAsync(closestSphere, normal);
                 normal = AdjustNormalWithTexture(closestSphere.Texture, normal, textureColor);
-                IntersectionService.NormalizeVector(normal);
+                normal.Normalize();
             }
 
-            double[] viewDirection = { -direction[0], -direction[1], -direction[2] };
+            Vector3 viewDirection = -direction;
             double intensity = LightService.ComputeLighting(scene, intersectionPoint, normal, viewDirection, closestSphere.Specular);
             Color localColor = AdjustIntensity(closestSphere.Color, intensity);
 
@@ -38,9 +38,7 @@ namespace CourseCG.Services
                 return localColor;
             }
 
-            double[] reflectionDirection = new double[3];
-            IntersectionService.ReflectRay(viewDirection, normal, reflectionDirection);
-
+            Vector3 reflectionDirection = IntersectionService.ReflectRay(viewDirection, normal);
             Color reflectionColor = await TraceRayAsync(scene, intersectionPoint, reflectionDirection, 0.001, double.PositiveInfinity, recursionDepth - 1);
             Color finalColor = AdjustReflection(localColor, reflectionColor, reflectivity);
 
@@ -63,15 +61,15 @@ namespace CourseCG.Services
             return Color.FromRgb(r, g, b);
         }
 
-        private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, double[] normal)
+        private static async Task<Color> GetColorFromTextureAsync(Sphere sphere, Vector3 normal)
         {
             double u = 0;
             double v = 0;
 
             ComputeTextureCoordinates(normal, ref u, ref v);
 
-            int x = (int)(u * sphere.Texture?.PixelWidth??0);
-            int y = (int)(v * sphere.Texture?.PixelHeight??0);
+            int x = (int)(u * sphere.Texture?.PixelWidth ?? 0);
+            int y = (int)(v * sphere.Texture?.PixelHeight ?? 0);
 
             var pixels = new byte[4];
 
@@ -83,32 +81,34 @@ namespace CourseCG.Services
             return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
         }
 
-        private static void ComputeTextureCoordinates(double[] normal, ref double u, ref double v)
+        private static void ComputeTextureCoordinates(Vector3 normal, ref double u, ref double v)
         {
-            double phi = Math.Atan2(normal[1], normal[0]);
-            double theta = Math.Acos(normal[2]);
+            double phi = Math.Atan2(normal.Y, normal.X);
+            double theta = Math.Acos(normal.Z);
 
             u = (phi + Math.PI) / (2.0 * Math.PI);
             v = theta / Math.PI;
         }
 
-        private static double[] AdjustNormalWithTexture(BitmapSource texture, double[] normal, Color textureColor)
+        private static Vector3 AdjustNormalWithTexture(BitmapSource texture, Vector3 normal, Color textureColor)
         {
             double Bu = textureColor.R / 255.0;
             double Bv = textureColor.G / 255.0;
-            double[] Nb = { Bu, Bv, 1 };
-            IntersectionService.NormalizeVector(Nb);
+            Vector3 Nb = new Vector3(Bu, Bv, 1);
+            Nb.Normalize();
 
-            double[] T = new double[3];
-            IntersectionService.Cross(normal, Nb, ref T);
-            IntersectionService.NormalizeVector(T);
+            Vector3 T = Vector3.CrossProduct(normal, Nb);
+            T.Normalize();
 
-            double[] B = new double[3];
-            IntersectionService.Cross(normal, T, ref B);
-            IntersectionService.NormalizeVector(B);
+            Vector3 B = Vector3.CrossProduct(normal, T);
+            B.Normalize();
 
-            double[] Nt = { IntersectionService.DotProduct(T, Nb), IntersectionService.DotProduct(B, Nb), IntersectionService.DotProduct(normal, Nb) };
-            return new double[] { normal[0] + Nt[0], normal[1] + Nt[1], normal[2] + Nt[2] };
+            Vector3 Nt = new Vector3(
+                Vector3.DotProduct(T, Nb),
+                Vector3.DotProduct(B, Nb),
+                Vector3.DotProduct(normal, Nb));
+
+            return normal + Nt;
         }
     }
 }

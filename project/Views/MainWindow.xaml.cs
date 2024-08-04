@@ -1,6 +1,6 @@
 ﻿using CourseCG.Services;
 using CourseCG.ViewModels;
-
+using CourseCG.Models;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -27,11 +27,6 @@ namespace CourseCG.Views
 
             var bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgr32, null);
 
-            double cosY = Math.Cos(_viewModel.Camera.RotY);
-            double sinY = Math.Sin(_viewModel.Camera.RotY);
-            double cosX = Math.Cos(_viewModel.Camera.RotX);
-            double sinX = Math.Sin(_viewModel.Camera.RotX);
-
             int[] pixels = new int[width * height];
 
             await Task.Run(() =>
@@ -40,25 +35,14 @@ namespace CourseCG.Views
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        double[] defaultDirection = { (x * 1.0 / width - 0.5) * 2, (-y * 1.0 / height + 0.5) * 2, -1 };
-
-                        double[] rotatedDirectionY = {
-                            defaultDirection[0] * cosY - defaultDirection[2] * sinY,
-                            defaultDirection[1],
-                            defaultDirection[0] * sinY + defaultDirection[2] * cosY
-                        };
-
-                        double[] finalDirection = {
-                            rotatedDirectionY[0],
-                            rotatedDirectionY[1] * cosX - rotatedDirectionY[2] * sinX,
-                            rotatedDirectionY[1] * sinX + rotatedDirectionY[2] * cosX
-                        };
-
-                        IntersectionService.NormalizeVector(finalDirection);
+                        Vector3 defaultDirection = new Vector3((x * 1.0 / width - 0.5) * 2, (-y * 1.0 / height + 0.5) * 2, -1);
+                        Vector3 rotatedDirectionY = Transformation.RotateY(defaultDirection, _viewModel.Camera.Rotation.Y);
+                        Vector3 finalDirection = Transformation.RotateX(rotatedDirectionY, _viewModel.Camera.Rotation.X);
+                        finalDirection.Normalize();
 
                         Color color = RayTracingService.TraceRayAsync(
                             _viewModel.Scene,
-                            new double[] { _viewModel.Camera.PosX, _viewModel.Camera.PosY, _viewModel.Camera.PosZ },
+                            new Vector3(_viewModel.Camera.Position.X, _viewModel.Camera.Position.Y, _viewModel.Camera.Position.Z),
                             finalDirection, 0.001, double.PositiveInfinity, 3).Result;
                         int pixelColor = (color.R << 16) | (color.G << 8) | color.B;
 

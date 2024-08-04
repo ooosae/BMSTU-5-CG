@@ -34,12 +34,12 @@
 \contentsline {section}{\numberline {3.1}Средства реализации}{28}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Диаграмма классов}{28}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Реализация алгоритмов}{29}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Интерфейс программного обеспечения}{36}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Исследовательская часть}{37}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Технические характеристики}{37}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Результаты работы ПО}{37}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Анализ производительности}{39}{section.4.3}%
-\contentsline {section}{Вывод}{40}{table.caption.18}%
-\contentsline {chapter}{Заключение}{41}{chapter*.19}%
-\contentsline {chapter}{Список использованных источников}{42}{Item.20}%
-\contentsline {chapter}{Приложение А}{42}{chapter*.20}%
+\contentsline {section}{\numberline {3.4}Интерфейс программного обеспечения}{35}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Исследовательская часть}{36}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Технические характеристики}{36}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Результаты работы ПО}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Анализ производительности}{38}{section.4.3}%
+\contentsline {section}{Вывод}{39}{table.caption.18}%
+\contentsline {chapter}{Заключение}{40}{chapter*.19}%
+\contentsline {chapter}{Список использованных источников}{41}{Item.20}%
+\contentsline {chapter}{Приложение А}{41}{chapter*.20}%

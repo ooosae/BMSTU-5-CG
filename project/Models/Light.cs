@@ -2,31 +2,52 @@
 
 namespace CourseCG.Models
 {
-    public class PointLight
-    {
-        public double Intensity { get; set; }
-        public double PositionX { get; set; }
-        public double PositionY { get; set; }
-        public double PositionZ { get; set; }
-    }
-
-    public class AmbientLight
+    public abstract class Light
     {
         public double Intensity { get; set; }
     }
 
-    public class DirectionalLight
+    public class PointLight : Light
     {
-        public double Intensity { get; set; }
-        public double DirectionX { get; set; }
-        public double DirectionY { get; set; }
-        public double DirectionZ { get; set; }
+        public Vector3 Position { get; set; }
+
+        public PointLight(Vector3 position, double intensity)
+        {
+            Position = position;
+            Intensity = intensity;
+        }
     }
 
-    public class Light
+    public class AmbientLight : Light
     {
-        public ObservableCollection<PointLight>? Point { get; set; }
-        public ObservableCollection<AmbientLight>? Ambient { get; set; }
-        public ObservableCollection<DirectionalLight>? Directional { get; set; }
+        public AmbientLight(double intensity)
+        {
+            Intensity = intensity;
+        }
+    }
+
+    public class DirectionalLight : Light
+    {
+        public Vector3 Direction { get; set; }
+
+        public DirectionalLight(Vector3 direction, double intensity)
+        {
+            Direction = direction;
+            Intensity = intensity;
+        }
+    }
+
+    public class LightCollection
+    {
+        public ObservableCollection<PointLight> PointLights { get; set; }
+        public ObservableCollection<AmbientLight> AmbientLights { get; set; }
+        public ObservableCollection<DirectionalLight> DirectionalLights { get; set; }
+
+        public LightCollection()
+        {
+            PointLights = new ObservableCollection<PointLight>();
+            AmbientLights = new ObservableCollection<AmbientLight>();
+            DirectionalLights = new ObservableCollection<DirectionalLight>();
+        }
     }
 }

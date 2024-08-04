@@ -20,7 +20,8 @@ namespace CourseCG.ViewModels
 
         public MainViewModel()
         {
-            LoadScene();
+            SceneChanged?.Invoke(this, EventArgs.Empty);
+
             AddSphereCommand = new RelayCommand(_ => AddSphere());
             DeleteSphereCommand = new RelayCommand(parameter => DeleteSphere(parameter), parameter => CanDeleteSphere(parameter));
             ClearSceneCommand = new RelayCommand(_ => ClearScene());
@@ -86,47 +87,6 @@ namespace CourseCG.ViewModels
         public ICommand RotateCameraDownCommand { get; }
         public ICommand LoadTextureCommand { get; }
 
-        private void LoadScene()
-        {
-            Scene = new Scene
-            {
-                Spheres = new ObservableCollection<Sphere>
-                {
-                    new Sphere { Radius = 1, XCenter = 0, YCenter = -1, ZCenter = 3, Color = Colors.Red, Specular = 500, Reflective = 0.2 },
-                    new Sphere { Radius = 1, XCenter = 2, YCenter = 0, ZCenter = 4, Color = Colors.Yellow, Specular = 500, Reflective = 0.3},
-                    new Sphere { Radius = 1, XCenter = -2, YCenter = 0, ZCenter = 4, Color = Colors.Blue, Specular = 10, Reflective = 0.4},
-                    new Sphere { Radius = 15, XCenter = 0, YCenter = -16, ZCenter = 0, Color = Colors.Green, Specular = 0, Reflective = 0}
-                },
-                Lights = new Light
-                {
-                    Ambient = new ObservableCollection<AmbientLight>
-                    {
-                        new AmbientLight { Intensity = 0.2 }
-                    },
-                    Point = new ObservableCollection<PointLight>
-                    {
-                        new PointLight { Intensity = 0.6, PositionX = 2, PositionY = 1, PositionZ = 0 }
-                    },
-                    Directional = new ObservableCollection<DirectionalLight>
-                    {
-                        new DirectionalLight { Intensity = 0.2, DirectionX = 1, DirectionY = 4, DirectionZ = 4 }
-                    }
-                }
-            };
-
-            Camera = new Camera
-            {
-                PosX = 0,
-                PosY = 0.5,
-                PosZ = 8,
-                RotX = -0.1,
-                RotY = 0,
-                RotZ = 1
-            };
-
-            SceneChanged?.Invoke(this, EventArgs.Empty);
-        }
-
         private void SetLightTypeAndAdd(object? parameter)
         {
             if (parameter is string lightType)
@@ -159,17 +119,7 @@ namespace CourseCG.ViewModels
                         double.TryParse(parts[5], out double specular);
                         double.TryParse(parts[6], out double reflective);
 
-                        Sphere sphere = new Sphere
-                        {
-                            XCenter = x,
-                            YCenter = y,
-                            ZCenter = z,
-                            Radius = radius,
-                            Color = color,
-                            Specular = specular,
-                            Reflective = reflective
-                        };
-
+                        Sphere sphere = new Sphere(new Vector3(x, y, z), radius, color, specular, reflective);
                         Scene.Spheres.Add(sphere);
                     }
                 }
@@ -215,7 +165,7 @@ namespace CourseCG.ViewModels
                         case "Ambient":
                             if (parts.Length == 1 && double.TryParse(parts[0], out double ambientIntensity))
                             {
-                                Scene.Lights.Ambient?.Add(new AmbientLight { Intensity = ambientIntensity });
+                                Scene.Lights.AmbientLights?.Add(new AmbientLight(ambientIntensity));
                             }
                             break;
                         case "Point":
@@ -224,13 +174,7 @@ namespace CourseCG.ViewModels
                                 double.TryParse(parts[2], out double pointY) &&
                                 double.TryParse(parts[3], out double pointZ))
                             {
-                                Scene.Lights.Point?.Add(new PointLight
-                                {
-                                    Intensity = pointIntensity,
-                                    PositionX = pointX,
-                                    PositionY = pointY,
-                                    PositionZ = pointZ
-                                });
+                                Scene.Lights.PointLights?.Add(new PointLight(new Vector3(pointX, pointY, pointZ), pointIntensity));
                             }
                             break;
                         case "Directional":
@@ -239,13 +183,7 @@ namespace CourseCG.ViewModels
                                 double.TryParse(parts[2], out double dirY) &&
                                 double.TryParse(parts[3], out double dirZ))
                             {
-                                Scene.Lights.Directional?.Add(new DirectionalLight
-                                {
-                                    Intensity = dirIntensity,
-                                    DirectionX = dirX,
-                                    DirectionY = dirY,
-                                    DirectionZ = dirZ
-                                });
+                                Scene.Lights.DirectionalLights?.Add(new DirectionalLight(new Vector3(dirX, dirY, dirZ), dirIntensity));
                             }
                             break;
                     }
@@ -304,21 +242,21 @@ namespace CourseCG.ViewModels
             switch (parameter)
             {
                 case AmbientLight ambientLight:
-                    if (Scene.Lights.Ambient != null && Scene.Lights.Ambient.Contains(ambientLight))
+                    if (Scene.Lights.AmbientLights != null && Scene.Lights.AmbientLights.Contains(ambientLight))
                     {
-                        Scene.Lights.Ambient.Remove(ambientLight);
+                        Scene.Lights.AmbientLights.Remove(ambientLight);
                     }
                     break;
                 case PointLight pointLight:
-                    if (Scene.Lights.Point != null && Scene.Lights.Point.Contains(pointLight))
+                    if (Scene.Lights.PointLights != null && Scene.Lights.PointLights.Contains(pointLight))
                     {
-                        Scene.Lights.Point.Remove(pointLight);
+                        Scene.Lights.PointLights.Remove(pointLight);
                     }
                     break;
                 case DirectionalLight directionalLight:
-                    if (Scene.Lights.Directional != null && Scene.Lights.Directional.Contains(directionalLight))
+                    if (Scene.Lights.DirectionalLights != null && Scene.Lights.DirectionalLights.Contains(directionalLight))
                     {
-                        Scene.Lights.Directional.Remove(directionalLight);
+                        Scene.Lights.DirectionalLights.Remove(directionalLight);
                     }
                     break;
             }
@@ -327,61 +265,61 @@ namespace CourseCG.ViewModels
 
         private void MoveCameraUp()
         {
-            Camera.PosY += 1;
+            Camera.Position.Y += 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraDown()
         {
-            Camera.PosY -= 1;
+            Camera.Position.Y -= 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraLeft()
         {
-            Camera.PosX -= 1;
+            Camera.Position.X -= 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraRight()
         {
-            Camera.PosX += 1;
+            Camera.Position.X += 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraCloser()
         {
-            Camera.PosZ -= 1;
+            Camera.Position.Z -= 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraFurther()
         {
-            Camera.PosZ += 1;
+            Camera.Position.Z += 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraLeft()
         {
-            Camera.RotY -= 0.1;
+            Camera.Rotation.Y -= 0.1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraRight()
         {
-            Camera.RotY += 0.1;
+            Camera.Rotation.Y += 0.1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraUp()
         {
-            Camera.RotX += 0.1;
+            Camera.Rotation.X += 0.1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraDown()
         {
-            Camera.RotX -= 0.1;
+            Camera.Rotation.X -= 0.1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
     }

@@ -25,9 +25,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding XCenter, StringFormat='X: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
-                            <TextBlock Text="{Binding YCenter, StringFormat='Y: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
-                            <TextBlock Text="{Binding ZCenter, StringFormat='Z: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding Center.X, StringFormat='X: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding Center.Y, StringFormat='Y: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="{Binding Center.Z, StringFormat='Z: {0:F2}'}" Width="65" VerticalAlignment="Center" Foreground="White"/>
                             <TextBlock Text="{Binding Radius}" Width="65" VerticalAlignment="Center" Foreground="White"/>
                             <Rectangle Width="65" Height="20" Fill="{Binding Color, Converter={StaticResource ColorToBrushConverter}}" VerticalAlignment="Center"/>
                             <Button Content="Загрузить текстуру"
@@ -60,9 +60,8 @@
                 <TextBlock Text="Рассеянный свет" FontWeight="Bold" Foreground="White" Height="18"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Интенсивность" Width="100" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="" Width="100" FontWeight="Bold" Foreground="White"/>
                 </StackPanel>
-                <ListBox x:Name="AmbientLightsListBox" ItemsSource="{Binding Scene.Lights.Ambient}" HorizontalAlignment="Left" Height="44" Width="600" Background="#FF686868" Foreground="White">
+                <ListBox x:Name="AmbientLightsListBox" ItemsSource="{Binding Scene.Lights.AmbientLights}" HorizontalAlignment="Left" Height="44" Width="600" Background="#FF686868" Foreground="White">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -86,14 +85,14 @@
                     <TextBlock Text="ПозицияY" Width="100" FontWeight="Bold" Foreground="White"/>
                     <TextBlock Text="ПозицияZ" Width="100" FontWeight="Bold" Foreground="White"/>
                 </StackPanel>
-                <ListBox x:Name="PointLightsListBox" ItemsSource="{Binding Scene.Lights.Point}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
+                <ListBox x:Name="PointLightsListBox" ItemsSource="{Binding Scene.Lights.PointLights}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Intensity}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding PositionX}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding PositionY}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding PositionZ}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Position.X}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Position.Y}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Position.Z}" Width="100" VerticalAlignment="Center" Foreground="White"/>
                                 <Button Content="Удалить"
                                         Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                         CommandParameter="{Binding}"
@@ -109,25 +108,25 @@
                 <TextBlock Text="Направленный свет" FontWeight="Bold" Foreground="White" Height="21"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Интенсивность" Width="100" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="ПоворотX" Width="100" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="ПоворотY" Width="100" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="ПоворотZ" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="НаправлениеX" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="НаправлениеY" Width="100" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="НаправлениеZ" Width="100" FontWeight="Bold" Foreground="White"/>
                 </StackPanel>
-                <ListBox x:Name="DirectionalLightsListBox" ItemsSource="{Binding Scene.Lights.Directional}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
+                <ListBox x:Name="DirectionalLightsListBox" ItemsSource="{Binding Scene.Lights.DirectionalLights}" HorizontalAlignment="Left" Height="50" Width="600" Background="#FF686868" Foreground="White">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Intensity}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding DirectionX}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding DirectionY}" Width="100" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding DirectionZ}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Direction.X}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Direction.Y}" Width="100" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Direction.Z}" Width="100" VerticalAlignment="Center" Foreground="White"/>
                                 <Button Content="Удалить"
-                                        Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                        CommandParameter="{Binding}"
-                                        Width="100"
-                                        Margin="5,0,0,0"
-                                        Background="Gray"
-                                        Foreground="White"/>
+                        Command="{Binding DataContext.DeleteLightCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                        CommandParameter="{Binding}"
+                        Width="100"
+                        Margin="5,0,0,0"
+                        Background="Gray"
+                        Foreground="White"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

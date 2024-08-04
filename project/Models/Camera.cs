@@ -2,11 +2,19 @@
 {
     public class Camera
     {
-        public double PosX { get; set; }
-        public double PosY { get; set; }
-        public double PosZ { get; set; }
-        public double RotX { get; set; }
-        public double RotY { get; set; }
-        public double RotZ { get; set; }
+        public Vector3 Position { get; set; }
+        public Vector3 Rotation { get; set; }
+
+        public Camera(Vector3 position, Vector3 rotation)
+        {
+            Position = position;
+            Rotation = rotation;
+        }
+
+        public Camera()
+        {
+            Position = new Vector3(0, 0.5, 8);
+            Rotation = new Vector3(-0.1, 0, 1);
+        }
     }
 }
