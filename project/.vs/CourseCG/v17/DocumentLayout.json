@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\vector3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\vector3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\services\\raytracingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:services\\raytracingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,18 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\services\\intersectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:services\\intersectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\services\\transformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,14 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\models\\vector3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|solutionrelative:models\\vector3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C403ED80-A3BE-462D-B450-7BD403754EFE}|CourseCG.csproj|c:\\users\\theca\\desktop\\bmstu-cg-course\\project\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,46 +94,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAnwBYAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T09:10:09.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "LightService.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\LightService.cs",
               "RelativeDocumentMoniker": "Services\\LightService.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\LightService.cs",
               "RelativeToolTip": "Services\\LightService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAA1wB4AAACbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-26T09:26:20.113Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "RayTracingService.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\RayTracingService.cs",
               "RelativeDocumentMoniker": "Services\\RayTracingService.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\RayTracingService.cs",
               "RelativeToolTip": "Services\\RayTracingService.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAowGgAAAAAAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAA9wAoAAACTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-26T09:10:15.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Transformation.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\Transformation.cs",
               "RelativeDocumentMoniker": "Services\\Transformation.cs",
@@ -141,18 +128,17 @@
               "RelativeToolTip": "Services\\Transformation.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T07:17:13.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-04T07:17:13.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Sphere.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Sphere.cs",
               "RelativeDocumentMoniker": "Models\\Sphere.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Sphere.cs",
               "RelativeToolTip": "Models\\Sphere.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAswA4AAAAPAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA5wBgAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T14:24:44.566Z",
               "EditorCaption": ""
@@ -165,40 +151,78 @@
               "RelativeDocumentMoniker": "Models\\Scene.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Scene.cs",
               "RelativeToolTip": "Models\\Scene.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAeAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwAsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T14:24:46.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Light.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Light.cs",
               "RelativeDocumentMoniker": "Models\\Light.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Light.cs",
               "RelativeToolTip": "Models\\Light.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAAAsAAAAtAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAADwvy0AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T14:24:51.813Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "IntersectionService.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\IntersectionService.cs",
               "RelativeDocumentMoniker": "Services\\IntersectionService.cs",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Services\\IntersectionService.cs",
               "RelativeToolTip": "Services\\IntersectionService.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAYwDYAAAAFAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwDEAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-26T09:12:40.474Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
+              "Title": "Camera.cs",
+              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Camera.cs",
+              "RelativeDocumentMoniker": "Models\\Camera.cs",
+              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Camera.cs",
+              "RelativeToolTip": "Models\\Camera.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T14:24:53.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Vector3.cs",
+              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Vector3.cs",
+              "RelativeDocumentMoniker": "Models\\Vector3.cs",
+              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Vector3.cs",
+              "RelativeToolTip": "Models\\Vector3.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAwwCwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T06:54:25.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAnwBYAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T09:10:09.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "RelayCommand.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\ViewModels\\RelayCommand.cs",
               "RelativeDocumentMoniker": "ViewModels\\RelayCommand.cs",
@@ -206,12 +230,11 @@
               "RelativeToolTip": "ViewModels\\RelayCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T03:03:43.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T03:03:43.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
@@ -219,46 +242,18 @@
               "RelativeToolTip": "Views\\MainWindow.xaml.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T09:10:21.05Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-26T09:10:21.05Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Views\\MainWindow.xaml",
               "RelativeToolTip": "Views\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-26T09:09:29.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Camera.cs",
-              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Camera.cs",
-              "RelativeDocumentMoniker": "Models\\Camera.cs",
-              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Camera.cs",
-              "RelativeToolTip": "Models\\Camera.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T14:24:53.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Vector3.cs",
-              "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Vector3.cs",
-              "RelativeDocumentMoniker": "Models\\Vector3.cs",
-              "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\Models\\Vector3.cs",
-              "RelativeToolTip": "Models\\Vector3.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAA2wBMAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T06:54:25.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-26T09:09:29.169Z"
             },
             {
               "$type": "Document",
@@ -270,8 +265,7 @@
               "RelativeToolTip": "ViewModels\\BaseViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T09:10:13.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-26T09:10:13.211Z"
             },
             {
               "$type": "Document",
@@ -283,8 +277,7 @@
               "RelativeToolTip": "AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:22:33.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:22:33.22Z"
             },
             {
               "$type": "Document",
@@ -295,8 +288,7 @@
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-03T14:25:03.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T14:25:03.815Z"
             },
             {
               "$type": "Document",
@@ -308,21 +300,19 @@
               "RelativeToolTip": "Converters\\ColorToBrushConverter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T14:26:48.401Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T14:26:48.401Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "CourseCG",
+              "Title": "CourseCG.csproj",
               "DocumentMoniker": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\CourseCG.csproj",
               "RelativeDocumentMoniker": "CourseCG.csproj",
               "ToolTip": "C:\\Users\\theca\\Desktop\\bmstu-cg-course\\project\\CourseCG.csproj",
               "RelativeToolTip": "CourseCG.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-03T14:26:22.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T14:26:22.792Z"
             },
             {
               "$type": "Document",
@@ -334,8 +324,7 @@
               "RelativeToolTip": "obj\\Debug\\net8.0-windows\\Views\\MainWindow.g.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T14:21:30.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T14:21:30.337Z"
             }
           ]
         }

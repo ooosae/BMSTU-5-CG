@@ -94,8 +94,7 @@
               "RelativeToolTip": "App.xaml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-03T07:22:08.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:22:08.886Z"
             },
             {
               "$type": "Document",
@@ -107,8 +106,7 @@
               "RelativeToolTip": "Views\\MainWindow.xaml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-03T07:22:06.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:22:06.887Z"
             },
             {
               "$type": "Document",
@@ -120,8 +118,7 @@
               "RelativeToolTip": "Converters\\ColorToBrushConverter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:20:46.746Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:20:46.746Z"
             },
             {
               "$type": "Document",
@@ -133,8 +130,7 @@
               "RelativeToolTip": "Models\\Sphere.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:07:39.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:07:39.275Z"
             },
             {
               "$type": "Document",
@@ -146,8 +142,7 @@
               "RelativeToolTip": "Services\\IntersectionService.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAAAFwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:57:59.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:57:59.299Z"
             },
             {
               "$type": "Document",
@@ -159,8 +154,7 @@
               "RelativeToolTip": "Services\\LightService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:57:57.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:57:57.134Z"
             },
             {
               "$type": "Document",
@@ -172,8 +166,7 @@
               "RelativeToolTip": "Services\\RayTracingService.cs",
               "ViewState": "AQIAAGkAAAAAAAAAAAAAAF4AAAByAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:55:41.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:55:41.42Z"
             },
             {
               "$type": "Document",
@@ -198,8 +191,7 @@
               "RelativeToolTip": "Views\\MainWindow.xaml.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAAABMAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:35:41.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:35:41.812Z"
             },
             {
               "$type": "Document",
@@ -211,8 +203,7 @@
               "RelativeToolTip": "ViewModels\\MainViewModel.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAmwCUAAABQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:44:39.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:44:39.275Z"
             },
             {
               "$type": "Document",
@@ -224,8 +215,7 @@
               "RelativeToolTip": "Models\\Scene.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:06:21.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:06:21.673Z"
             },
             {
               "$type": "Document",
@@ -237,8 +227,7 @@
               "RelativeToolTip": "Models\\Light.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:01:10.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:01:10.268Z"
             },
             {
               "$type": "Document",
@@ -250,8 +239,7 @@
               "RelativeToolTip": "Models\\Camera.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T07:00:07.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T07:00:07.192Z"
             },
             {
               "$type": "Document",
@@ -263,8 +251,7 @@
               "RelativeToolTip": "ViewModels\\RelayCommand.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAmwCsAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:50:02.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:50:02.672Z"
             },
             {
               "$type": "Document",
@@ -276,8 +263,7 @@
               "RelativeToolTip": "ViewModels\\BaseViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:40:03.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:40:03.379Z"
             },
             {
               "$type": "Document",
@@ -289,8 +275,7 @@
               "RelativeToolTip": "AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T06:28:16.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T06:28:16.719Z"
             },
             {
               "$type": "Document",
@@ -302,8 +287,7 @@
               "RelativeToolTip": "CourseCG.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-02T03:03:10.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T03:03:10.884Z"
             }
           ]
         }

@@ -7,6 +7,6 @@
     "\\ViewModels",
     "\\Views"
   ],
-  "SelectedNode": "\\ViewModels\\RelayCommand.cs",
+  "SelectedNode": "\\Services\\RayTracingService.cs",
   "PreviewInSolutionExplorer": false
 }
