@@ -1,0 +1,11 @@
+﻿<Window x:Class="CourseCG.Views.TextureTypeSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Выбор типа текстуры" Height="200" Width="300">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Выберите тип текстуры:" FontWeight="Bold" FontSize="16" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+        <Button Content="Карта высот" Width="200" Margin="0,10" Click="HeightMapButton_Click"/>
+        <Button Content="Карта нормалей" Width="200" Margin="0,10" Click="NormalMapButton_Click"/>
+        <Button Content="Карта параллакса" Width="200" Margin="0,10" Click="ParallaxMapButton_Click"/>
+    </StackPanel>
+</Window>

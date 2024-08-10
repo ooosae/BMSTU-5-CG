@@ -3,6 +3,13 @@ using System.Windows.Media.Imaging;
 
 namespace CourseCG.Models
 {
+    public enum TextureType
+    {
+        HeightMap,
+        NormalMap,
+        ParallaxMap
+    }
+
     public class Sphere
     {
         public double Radius { get; set; }
@@ -12,7 +19,9 @@ namespace CourseCG.Models
         public double Reflective { get; set; }
         public BitmapImage? Texture { get; set; }
 
-        public Sphere(Vector3 center, double radius, Color color, double specular, double reflective, BitmapImage? texture = null)
+        public TextureType TextureType { get; set; }
+
+        public Sphere(Vector3 center, double radius, Color color, double specular, double reflective, BitmapImage? texture = null, TextureType textureType = 0)
         {
             Center = center;
             Radius = radius;
@@ -20,6 +29,7 @@ namespace CourseCG.Models
             Specular = specular;
             Reflective = reflective;
             Texture = texture;
+            TextureType = TextureType;
         }
 
         public Sphere()
@@ -30,6 +40,7 @@ namespace CourseCG.Models
             Specular = 0;
             Reflective = 0;
             Texture = null;
+            TextureType = 0;
         }
     }
 }

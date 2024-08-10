@@ -44,5 +44,17 @@
 
         public static Vector3 CrossProduct(Vector3 v1, Vector3 v2) =>
             new Vector3(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+
+        public static double Clamp(double value, double min, double max) =>
+            value < min ? min : (value > max ? max : value);
+
+        public static Vector3 Lerp(Vector3 v1, Vector3 v2, double t)
+        {
+            return new Vector3(
+                v1.X + (v2.X - v1.X) * t,
+                v1.Y + (v2.Y - v1.Y) * t,
+                v1.Z + (v2.Z - v1.Z) * t
+            );
+        }
     }
 }

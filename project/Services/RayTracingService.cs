@@ -1,4 +1,6 @@
 ﻿using CourseCG.Models;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -14,7 +16,7 @@ namespace CourseCG.Services
 
             if (closestSphere == null)
             {
-                return Colors.LightGray;
+                return Colors.LightBlue;
             }
 
             Vector3 intersectionPoint = camera + direction * closestT;
@@ -23,8 +25,20 @@ namespace CourseCG.Services
 
             if (closestSphere.Texture != null)
             {
-                Color textureColor = await GetColorFromTextureAsync(closestSphere, normal);
-                normal = AdjustNormalWithTexture(closestSphere.Texture, normal, textureColor);
+   
+                switch (closestSphere.TextureType)
+                {
+                    case TextureType.HeightMap:
+                        normal = AdjustNormalWithHeightMap(closestSphere.Texture, normal, intersectionPoint);
+                        break;
+                    case TextureType.NormalMap:
+                        Color textureColor = await GetColorFromTextureAsync(closestSphere, normal);
+                        normal = AdjustNormalWithNormalMap(closestSphere.Texture, normal, textureColor);
+                        break;
+                    case TextureType.ParallaxMap:
+                        normal = AdjustNormalWithParallaxMap(closestSphere.Texture, normal, intersectionPoint);
+                        break;
+                }
                 normal.Normalize();
             }
 
@@ -90,25 +104,154 @@ namespace CourseCG.Services
             v = theta / Math.PI;
         }
 
-        private static Vector3 AdjustNormalWithTexture(BitmapSource texture, Vector3 normal, Color textureColor)
+        private static Vector3 AdjustNormalWithHeightMap(BitmapSource heightMap, Vector3 normal, Vector3 intersectionPoint, double heightMapIntensity = 10.0)
         {
-            double Bu = textureColor.R / 255.0;
-            double Bv = textureColor.G / 255.0;
-            Vector3 Nb = new Vector3(Bu, Bv, 1);
-            Nb.Normalize();
+            double u = 0;
+            double v = 0;
+            ComputeTextureCoordinates(normal, ref u, ref v);
 
-            Vector3 T = Vector3.CrossProduct(normal, Nb);
-            T.Normalize();
+            int width = heightMap.PixelWidth;
+            int height = heightMap.PixelHeight;
 
-            Vector3 B = Vector3.CrossProduct(normal, T);
-            B.Normalize();
+            int x = (int)(u * width);
+            int y = (int)(v * height);
 
-            Vector3 Nt = new Vector3(
-                Vector3.DotProduct(T, Nb),
-                Vector3.DotProduct(B, Nb),
-                Vector3.DotProduct(normal, Nb));
+            x = Math.Max(0, Math.Min(width - 1, x));
+            y = Math.Max(0, Math.Min(height - 1, y));
 
-            return normal + Nt;
+            byte[] currentPixel = new byte[4];
+            heightMap.CopyPixels(new Int32Rect(x, y, 1, 1), currentPixel, 4, 0);
+
+            double h = currentPixel[0] / 255.0;
+
+            Vector3 gradient = new Vector3(0, 0, 1.0);
+
+            if (x > 0 && x < width - 1)
+            {
+                byte[] leftPixel = new byte[4];
+                byte[] rightPixel = new byte[4];
+
+                heightMap.CopyPixels(new Int32Rect(x - 1, y, 1, 1), leftPixel, 4, 0);
+                heightMap.CopyPixels(new Int32Rect(x + 1, y, 1, 1), rightPixel, 4, 0);
+
+                double hLeft = leftPixel[0] / 255.0;
+                double hRight = rightPixel[0] / 255.0;
+
+                gradient.X = (hRight - hLeft) * heightMapIntensity;
+            }
+
+            if (y > 0 && y < height - 1)
+            {
+                byte[] topPixel = new byte[4];
+                byte[] bottomPixel = new byte[4];
+
+                heightMap.CopyPixels(new Int32Rect(x, y - 1, 1, 1), topPixel, 4, 0);
+                heightMap.CopyPixels(new Int32Rect(x, y + 1, 1, 1), bottomPixel, 4, 0);
+
+                double hTop = topPixel[0] / 255.0;
+                double hBottom = bottomPixel[0] / 255.0;
+
+                gradient.Y = (hBottom - hTop) * heightMapIntensity;
+            }
+
+            Vector3 perturbedNormal = normal + new Vector3(-gradient.X, -gradient.Y, 1.0);
+            perturbedNormal.Normalize();
+
+            return perturbedNormal;
+        }
+
+
+        private static Vector3 AdjustNormalWithNormalMap(BitmapSource texture, Vector3 normal, Color textureColor, double normalMapIntensity = 0.45)
+        {
+            double x = ((textureColor.R) / 255.0) * 2.0 - 1.0;
+            double y = ((textureColor.G) / 255.0) * 2.0 - 1.0;
+
+            double z = Math.Sqrt(Math.Max(0.0, 1.0 - Math.Clamp(x * x + y * y, 0.0, 1.0)));
+
+            Vector3 normalMapNormal = new Vector3(x, y, z);
+            normalMapNormal.Normalize();
+
+            return Vector3.Lerp(normal, normalMapNormal, normalMapIntensity);
+        }
+
+
+        private static Vector3 AdjustNormalWithParallaxMap(BitmapSource parallaxMap, Vector3 normal, Vector3 viewDirection, double heightMapIntensity = 10.0)
+        {
+            double u = 0;
+            double v = 0;
+            ComputeTextureCoordinates(normal, ref u, ref v);
+
+
+            int width = parallaxMap.PixelWidth;
+            int height = parallaxMap.PixelHeight;
+
+            int x = (int)(u * width) % width;
+            int y = (int)(v * height) % height;
+
+            x = (x + width) % width;
+            y = (y + height) % height;
+
+            byte[] currentPixel = new byte[4];
+            parallaxMap.CopyPixels(new Int32Rect(x, y, 1, 1), currentPixel, 4, 0);
+            double heightValue = currentPixel[0] / 255.0;
+
+            Vector3 viewDirXY = new Vector3(viewDirection.X, viewDirection.Y, 0);
+            viewDirXY.Normalize();
+
+            double parallaxScale = 0.05;
+
+            Vector3 parallaxOffset = viewDirXY * (heightValue * heightMapIntensity * parallaxScale);
+
+            parallaxOffset.X = (parallaxOffset.X + width) % width;
+            parallaxOffset.Y = (parallaxOffset.Y + height) % height;
+
+            double uAdj = (u - parallaxOffset.X / width + 1.0) % 1.0;
+            double vAdj = (v - parallaxOffset.Y / height + 1.0) % 1.0;
+
+            int adjX = (int)(uAdj * width) % width;
+            int adjY = (int)(vAdj * height) % height;
+
+            adjX = (adjX + width) % width;
+            adjY = (adjY + height) % height;
+
+            byte[] adjustedPixel = new byte[4];
+            parallaxMap.CopyPixels(new Int32Rect(adjX, adjY, 1, 1), adjustedPixel, 4, 0);
+
+            double hX = 0.0;
+            double hY = 0.0;
+
+            if (adjX > 0 && adjX < width - 1)
+            {
+                byte[] leftPixel = new byte[4];
+                byte[] rightPixel = new byte[4];
+
+                parallaxMap.CopyPixels(new Int32Rect((adjX - 1 + width) % width, adjY, 1, 1), leftPixel, 4, 0);
+                parallaxMap.CopyPixels(new Int32Rect((adjX + 1) % width, adjY, 1, 1), rightPixel, 4, 0);
+
+                double hLeft = leftPixel[0] / 255.0;
+                double hRight = rightPixel[0] / 255.0;
+
+                hX = (hRight - hLeft) * heightMapIntensity;
+            }
+
+            if (adjY > 0 && adjY < height - 1)
+            {
+                byte[] topPixel = new byte[4];
+                byte[] bottomPixel = new byte[4];
+
+                parallaxMap.CopyPixels(new Int32Rect(adjX, (adjY - 1 + height) % height, 1, 1), topPixel, 4, 0);
+                parallaxMap.CopyPixels(new Int32Rect(adjX, (adjY + 1) % height, 1, 1), bottomPixel, 4, 0);
+
+                double hTop = topPixel[0] / 255.0;
+                double hBottom = bottomPixel[0] / 255.0;
+
+                hY = (hBottom - hTop) * heightMapIntensity;
+            }
+
+            Vector3 perturbedNormal = new Vector3(-hX, -hY, 1.0);
+            perturbedNormal.Normalize();
+
+            return normal + perturbedNormal;
         }
     }
 }

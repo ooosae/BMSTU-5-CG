@@ -4,6 +4,7 @@ using CourseCG.Models;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace CourseCG.Views
 {
@@ -28,6 +29,7 @@ namespace CourseCG.Views
             var bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgr32, null);
 
             int[] pixels = new int[width * height];
+            Stopwatch stopwatch = new Stopwatch();
 
             await Task.Run(() =>
             {
@@ -40,10 +42,12 @@ namespace CourseCG.Views
                         Vector3 finalDirection = Transformation.RotateX(rotatedDirectionY, _viewModel.Camera.Rotation.X);
                         finalDirection.Normalize();
 
+                        stopwatch = Stopwatch.StartNew();
                         Color color = RayTracingService.TraceRayAsync(
                             _viewModel.Scene,
                             new Vector3(_viewModel.Camera.Position.X, _viewModel.Camera.Position.Y, _viewModel.Camera.Position.Z),
                             finalDirection, 0.001, double.PositiveInfinity, 3).Result;
+                        stopwatch.Stop();
                         int pixelColor = (color.R << 16) | (color.G << 8) | color.B;
 
                         pixels[y * width + x] = pixelColor;
@@ -55,6 +59,8 @@ namespace CourseCG.Views
             {
                 bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0);
                 RenderImage.Source = bitmap;
+
+                RenderTimeTextBlock.Text = $"Время трассировки: {stopwatch.Elapsed.TotalMilliseconds} мс";
             });
         }
     }

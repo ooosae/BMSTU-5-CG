@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
+using CourseCG.Views;
 
 namespace CourseCG.ViewModels
 {
@@ -197,6 +198,14 @@ namespace CourseCG.ViewModels
             if (sphere == null)
                 return;
 
+            var textureTypeWindow = new TextureTypeSelectionWindow();
+            textureTypeWindow.ShowDialog();
+
+            if (!textureTypeWindow.IsTypeSelected)
+                return;
+
+            sphere.TextureType = textureTypeWindow.SelectedTextureType;
+
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "Image files (*.png;*.jpg)|*.png;*.jpg"
@@ -230,8 +239,7 @@ namespace CourseCG.ViewModels
                 SceneChanged?.Invoke(this, EventArgs.Empty);
             }
         }
-
-
+       
         private bool CanDeleteLight(object? parameter)
         {
             return parameter is AmbientLight || parameter is PointLight || parameter is DirectionalLight;
@@ -265,61 +273,61 @@ namespace CourseCG.ViewModels
 
         private void MoveCameraUp()
         {
-            Camera.Position.Y += 1;
+            Camera.Position.Y += 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraDown()
         {
-            Camera.Position.Y -= 1;
+            Camera.Position.Y -= 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraLeft()
         {
-            Camera.Position.X -= 1;
+            Camera.Position.X -= 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraRight()
         {
-            Camera.Position.X += 1;
+            Camera.Position.X += 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraCloser()
         {
-            Camera.Position.Z -= 1;
+            Camera.Position.Z -= 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveCameraFurther()
         {
-            Camera.Position.Z += 1;
+            Camera.Position.Z += 0.5;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraLeft()
         {
-            Camera.Rotation.Y -= 0.1;
+            Camera.Rotation.Y -= 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraRight()
         {
-            Camera.Rotation.Y += 0.1;
+            Camera.Rotation.Y += 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraUp()
         {
-            Camera.Rotation.X += 0.1;
+            Camera.Rotation.X += 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void RotateCameraDown()
         {
-            Camera.Rotation.X -= 0.1;
+            Camera.Rotation.X -= 1;
             SceneChanged?.Invoke(this, EventArgs.Empty);
         }
     }
