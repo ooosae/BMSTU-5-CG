@@ -30,6 +30,7 @@ namespace CourseCG.Views
 
             int[] pixels = new int[width * height];
             Stopwatch stopwatch = new Stopwatch();
+            stopwatch = Stopwatch.StartNew();
 
             await Task.Run(() =>
             {
@@ -42,18 +43,19 @@ namespace CourseCG.Views
                         Vector3 finalDirection = Transformation.RotateX(rotatedDirectionY, _viewModel.Camera.Rotation.X);
                         finalDirection.Normalize();
 
-                        stopwatch = Stopwatch.StartNew();
+                        
                         Color color = RayTracingService.TraceRayAsync(
                             _viewModel.Scene,
                             new Vector3(_viewModel.Camera.Position.X, _viewModel.Camera.Position.Y, _viewModel.Camera.Position.Z),
                             finalDirection, 0.001, double.PositiveInfinity, 3).Result;
-                        stopwatch.Stop();
+                       
                         int pixelColor = (color.R << 16) | (color.G << 8) | color.B;
-
                         pixels[y * width + x] = pixelColor;
                     }
                 });
             });
+
+            stopwatch.Stop();
 
             Application.Current.Dispatcher.Invoke(() =>
             {

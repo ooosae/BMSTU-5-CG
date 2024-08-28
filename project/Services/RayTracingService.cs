@@ -181,7 +181,6 @@ namespace CourseCG.Services
             double v = 0;
             ComputeTextureCoordinates(normal, ref u, ref v);
 
-
             int width = parallaxMap.PixelWidth;
             int height = parallaxMap.PixelHeight;
 

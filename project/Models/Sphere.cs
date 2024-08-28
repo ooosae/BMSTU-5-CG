@@ -18,7 +18,6 @@ namespace CourseCG.Models
         public double Specular { get; set; }
         public double Reflective { get; set; }
         public BitmapImage? Texture { get; set; }
-
         public TextureType TextureType { get; set; }
 
         public Sphere(Vector3 center, double radius, Color color, double specular, double reflective, BitmapImage? texture = null, TextureType textureType = 0)

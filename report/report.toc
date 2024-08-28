@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.2}Описание метода внесения возмущений в нормаль}{5}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Текстурные карты}{6}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Представление объектов}{6}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Анализ и выбор алгоритма удаления невидимых ребер и поверхностей}{6}{section.1.5}%
+\contentsline {section}{\numberline {1.5}Анализ и выбор алгоритма удаления невидимых линий и поверхностей}{6}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Алгоритм буфера глубины}{7}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Алгоритм Робертса}{8}{subsection.1.5.2}%
 \contentsline {subsection}{\numberline {1.5.3}Алгоритм обратной трассировки лучей}{8}{subsection.1.5.3}%
@@ -34,12 +34,11 @@
 \contentsline {section}{\numberline {3.1}Средства реализации}{28}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Диаграмма классов}{28}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Реализация алгоритмов}{29}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Интерфейс программного обеспечения}{35}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Исследовательская часть}{36}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Технические характеристики}{36}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Результаты работы ПО}{36}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Анализ производительности}{38}{section.4.3}%
-\contentsline {section}{Вывод}{39}{table.caption.18}%
-\contentsline {chapter}{Заключение}{40}{chapter*.19}%
-\contentsline {chapter}{Список использованных источников}{41}{Item.20}%
-\contentsline {chapter}{Приложение А}{41}{chapter*.20}%
+\contentsline {section}{\numberline {3.4}Интерфейс программного обеспечения}{38}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Исследовательская часть}{40}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Технические характеристики}{40}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Результаты работы ПО}{40}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Анализ наложения текстур}{43}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Анализ производительности}{45}{section.4.4}%
+\contentsline {chapter}{Список использованных источников}{48}{Item.22}%
+\contentsline {chapter}{Приложение А}{48}{chapter*.25}%
