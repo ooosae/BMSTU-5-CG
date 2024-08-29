@@ -1,0 +1,55 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+\ProvideTextCommandDefault{\cyrdash}{\iflanguage{russian}{\hbox
+  to.8em{--\hss--}}{\textemdash}}
+\providecommand*{\BibDash}{\ifdim\lastskip>0pt\unskip\nobreak\hskip.2em plus
+  0.1em\fi
+\cyrdash\hskip.2em plus 0.1em\ignorespaces}
+\renewcommand{\newblock}{\ignorespaces}
+
+\bibitem{b1}
+\selectlanguageifdefined{english}
+Компьютерная графика: Учебное пособие.
+  [Электронный ресурс]. \BibDash
+\newblock Режим доступа:
+  \url{https://asu.tusur.ru/learning/books/b10.doc} (дата
+  обращения: 01.09.2023).
+
+\bibitem{b2}
+\selectlanguageifdefined{english}
+{Перемитина, Т. О.} Компьютерная графика:
+  учебное пособие. \BibDash
+\newblock Эль Контент, 2012. \BibDash
+\newblock с.~144.
+
+\bibitem{b3}
+\selectlanguageifdefined{english}
+{Боресков, А. В. and Шикин, Е. В.} Компьютерная
+  графика: учебник и практикум для
+  прикладного бакалавриата. \BibDash
+\newblock Издательство Юрайт, 2016. \BibDash
+\newblock с.~219.
+
+\bibitem{b4}
+\selectlanguageifdefined{english}
+{Гамбетта, Г.} Компьютерная графика.
+  Рейтрейсинг и растеризация. \BibDash
+\newblock Питер, 2022. \BibDash
+\newblock с.~224.
+
+\bibitem{b5}
+\selectlanguageifdefined{english}
+Real-Time Rendering~/ Akenine-Möller~T., Haines~E., Hoffman~N., Pesce~A.,
+  Iwanicki~M., and Hillaire~S. \BibDash
+\newblock Fourth ed. \BibDash
+\newblock Taylor and Francis, CRC Press, 2018. \BibDash
+\newblock с.~1178.
+
+\end{thebibliography}

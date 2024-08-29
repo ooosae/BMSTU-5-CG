@@ -18,55 +18,54 @@ A level-1 auxiliary file: 50-conclusion.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: 51-biblio.aux
 Reallocating 'name_of_file' (item size: 1) to 9 items.
-I couldn't open style file gost780u.bst
----line 3 of file 51-biblio.aux
- : \bibstyle{gost780u
- :                   }
-I'm skipping whatever remains of this command
+The style file: gost2008.bst
 Reallocating 'name_of_file' (item size: 1) to 10 items.
 Reallocating 'name_of_file' (item size: 1) to 19 items.
 A level-1 auxiliary file: 60-application.aux
-I found no \citation commands---while reading file report.aux
-I found no style file---while reading file report.aux
-You've used 0 entries,
-            0 wiz_defined-function locations,
-            94 strings with 632 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: 51-biblio.bib
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--empty year/date in b1
+You've used 5 entries,
+            5657 wiz_defined-function locations,
+            1619 strings with 15399 characters,
+and the built_in function-call counts, 1701 in all, are:
+= -- 189
+> -- 37
+< -- 4
++ -- 14
+- -- 9
+* -- 61
+:= -- 171
+add.period$ -- 18
+call.type$ -- 5
+change.case$ -- 1
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 6
+duplicate$ -- 107
+empty$ -- 221
+format.name$ -- 9
+if$ -- 476
 int.to.chr$ -- 0
-int.to.str$ -- 0
+int.to.str$ -- 5
 missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
+newline$ -- 45
+num.names$ -- 12
+pop$ -- 44
+preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 0
+skip$ -- 84
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 26
+swap$ -- 64
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 3 error messages)
+warning$ -- 1
+while$ -- 8
+width$ -- 6
+write$ -- 77
+(There was 1 warning)

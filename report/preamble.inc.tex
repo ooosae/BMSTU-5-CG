@@ -1,8 +1,11 @@
-\usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
-\usepackage[utf8]{inputenc} % Кодировка utf8
-\usepackage[T2A]{fontenc} % Поддержка русских букв
-\usepackage[english,russian]{babel} % Языки: русский, английский
-%\usepackage{pscyr} % Нормальные шрифты
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\usepackage{cmap}
 \usepackage{enumitem}
 \usepackage{soul}
 \usepackage{ulem}
@@ -15,11 +18,6 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
-% \usepackage[
-% singlelinecheck=false % <-- important
-% ]{caption}
-
-% объявляем новую команду для переноса строки внутри ячейки таблицы
 \newcommand{\specialcell}[2][c]{%
 	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
@@ -27,13 +25,8 @@
 \captionsetup{labelsep=endash}
 \captionsetup[figure]{name={Рисунок}}
 
-\usepackage{amsmath}
-
 \usepackage{geometry}
-\geometry{left=30mm}
-\geometry{right=10mm}
-\geometry{top=20mm}
-\geometry{bottom=20mm}
+\geometry{left=30mm, right=10mm, top=20mm, bottom=20mm}
 
 \usepackage{titlesec}
 \titleformat{\section}
@@ -45,28 +38,13 @@
 \titlespacing*{\subsection}{\parindent}{*4}{*4}
 
 \usepackage{setspace}
-\onehalfspacing % Полуторный интервал
+\onehalfspacing
 
 \frenchspacing
-\usepackage{indentfirst} % Красная строка
+\usepackage{indentfirst}
 
-\usepackage{titlesec}
 \titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{20pt}{\LARGE\bfseries}
 \titleformat{\section}{\Large\bfseries}{\thesection}{20pt}{\Large\bfseries}
-% \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{color}
-
-%\renewcommand{\thechapter}{\arabic{chapter}.}
-%\renewcommand{\thesection}{\thechapter\arabic{section}.}
-%\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
-\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
-\renewcommand\thefigure{\arabic{chapter}.\arabic{figure}}
-\renewcommand\thetable{\arabic{chapter}.\arabic{table}}
-\AtBeginDocument{
-	\renewcommand\thelstlisting{\arabic{chapter}.\arabic{lstlisting}}
-}
 
 \lstset{ %
 	language=[Sharp]C,
@@ -84,10 +62,15 @@
 	tabsize=2,
 	breaklines=true,
 	breakatwhitespace=false,
-	morekeywords={partial, var, yield, get, set, async, await}
+	morekeywords={partial, var, yield, get, set, async, await},
+	captionpos=b,
+	caption={Листинг}
 }
 
+\renewcommand{\lstlistingname}{Листинг}
+
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
 
@@ -107,9 +90,9 @@
 	\end{figure}
 }
 
-\usepackage[singlelinecheck=false]{caption} % Настройка подписей float объектов
+\usepackage[singlelinecheck=false]{caption}
 
-\usepackage[unicode,pdftex]{hyperref} % Ссылки в pdf
+\usepackage{hyperref}
 \hypersetup{hidelinks}
 
 \usepackage{csvsimple}
@@ -120,4 +103,17 @@
 
 \newcommand{\code}[1]{\texttt{#1}}
 
-\addto\captionsrussian{\renewcommand{\bibname}{Список использованных источников}}
+\captionsrussian{\def\bibname{Список использованных источников}}
+\captionsrussian{\def\contentsname{Содержание}}
+\renewcommand{\figurename}{Рисунок}
+\renewcommand{\tablename}{Таблица}
+\renewcommand{\refname}{Список использованных источников}
+\renewcommand{\listfigurename}{Список рисунков}
+\renewcommand{\listtablename}{Список таблиц}
+\renewcommand{\lstlistlistingname}{Список листингов}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@lbibitem}{\hyperpage}{с.~\hyperpage}{}{}
+\patchcmd{\@lbibitem}{p\@}{с.}{}{}
+\makeatother
