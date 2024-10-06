@@ -1,5 +1,6 @@
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
+\setmonofont{Consolas}
 
 \usepackage{polyglossia}
 \setdefaultlanguage{russian}
@@ -27,11 +28,16 @@
 
 \usepackage{geometry}
 \geometry{left=30mm, right=10mm, top=20mm, bottom=20mm}
+\setlength{\parindent}{1.25cm}
 
 \usepackage{titlesec}
 \titleformat{\section}
 {\normalsize\bfseries}
 {\thesection}
+{1em}{}
+\titleformat{\subsection}
+{\normalsize\bfseries}
+{\thesubsection}
 {1em}{}
 \titlespacing*{\chapter}{0pt}{-30pt}{8pt}
 \titlespacing*{\section}{\parindent}{*4}{*4}

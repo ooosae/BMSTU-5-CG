@@ -27,45 +27,49 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: 51-biblio.bib
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Warning--empty year/date in b1
-You've used 5 entries,
+Warning--empty year/date in b7
+Warning--empty year/date in b6
+Warning--empty year/date in b8
+Warning--empty year/date in b9
+You've used 9 entries,
             5657 wiz_defined-function locations,
-            1619 strings with 15399 characters,
-and the built_in function-call counts, 1701 in all, are:
-= -- 189
-> -- 37
+            1631 strings with 16134 characters,
+and the built_in function-call counts, 2257 in all, are:
+= -- 241
+> -- 41
 < -- 4
-+ -- 14
++ -- 18
 - -- 9
-* -- 61
-:= -- 171
-add.period$ -- 18
-call.type$ -- 5
+* -- 93
+:= -- 211
+add.period$ -- 26
+call.type$ -- 9
 change.case$ -- 1
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 107
-empty$ -- 221
+cite$ -- 14
+duplicate$ -- 143
+empty$ -- 313
 format.name$ -- 9
-if$ -- 476
+if$ -- 624
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 9
 missing$ -- 0
-newline$ -- 45
+newline$ -- 65
 num.names$ -- 12
-pop$ -- 44
+pop$ -- 64
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 84
+skip$ -- 108
 stack$ -- 0
 substring$ -- 26
-swap$ -- 64
+swap$ -- 84
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
+warning$ -- 5
 while$ -- 8
-width$ -- 6
-write$ -- 77
-(There was 1 warning)
+width$ -- 10
+write$ -- 109
+(There were 5 warnings)

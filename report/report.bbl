@@ -27,7 +27,7 @@
 {Перемитина, Т. О.} Компьютерная графика:
   учебное пособие. \BibDash
 \newblock Эль Контент, 2012. \BibDash
-\newblock с.~144.
+\newblock P.~144.
 
 \bibitem{b3}
 \selectlanguageifdefined{english}
@@ -35,14 +35,14 @@
   графика: учебник и практикум для
   прикладного бакалавриата. \BibDash
 \newblock Издательство Юрайт, 2016. \BibDash
-\newblock с.~219.
+\newblock P.~219.
 
 \bibitem{b4}
 \selectlanguageifdefined{english}
 {Гамбетта, Г.} Компьютерная графика.
   Рейтрейсинг и растеризация. \BibDash
 \newblock Питер, 2022. \BibDash
-\newblock с.~224.
+\newblock P.~224.
 
 \bibitem{b5}
 \selectlanguageifdefined{english}
@@ -50,6 +50,34 @@ Real-Time Rendering~/ Akenine-Möller~T., Haines~E., Hoffman~N., Pesce~A.,
   Iwanicki~M., and Hillaire~S. \BibDash
 \newblock Fourth ed. \BibDash
 \newblock Taylor and Francis, CRC Press, 2018. \BibDash
-\newblock с.~1178.
+\newblock P.~1178.
+
+\bibitem{b7}
+\selectlanguageifdefined{english}
+Visual Studio. [Электронный ресурс]. \BibDash
+\newblock Режим доступа: \url{https://visualstudio.microsoft.com}
+  (дата обращения: 22.09.2023).
+
+\bibitem{b6}
+\selectlanguageifdefined{english}
+Windows Presentation Foundation documentation. [Электронный
+  ресурс]. \BibDash
+\newblock Режим доступа:
+  \url{https://learn.microsoft.com/en-us/dotnet/desktop/wpf}(дата
+  обращения: 22.09.2023).
+
+\bibitem{b8}
+\selectlanguageifdefined{english}
+.NET 8.0. [Электронный ресурс]. \BibDash
+\newblock Режим доступа: \url{https://dotnet.microsoft.com}
+  (дата обращения: 22.09.2023).
+
+\bibitem{b9}
+\selectlanguageifdefined{english}
+MacBook Pro (16-inch, 2019) -- Technical Specifications.
+  [Электронный ресурс]. \BibDash
+\newblock Режим доступа:
+  \url{https://support.apple.com/en-us/111932} (дата обращения:
+  22.09.2023).
 
 \end{thebibliography}

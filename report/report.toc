@@ -1,46 +1,44 @@
 \selectlanguage *[]{russian}
 \contentsline {chapter}{Введение}{4}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Аналитическая часть}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Текстура, как характеристика поверхности трехмерного тела}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Описание метода внесения возмущений в нормаль}{5}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Текстурные карты}{6}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Представление объектов}{6}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Анализ и выбор алгоритма удаления невидимых линий и поверхностей}{7}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Алгоритм буфера глубины}{7}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Алгоритм Робертса}{8}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.5.3}Алгоритм обратной трассировки лучей}{9}{subsection.1.5.3}%
-\contentsline {section}{\numberline {1.6}Выбор модели освещения}{10}{section.1.6}%
-\contentsline {chapter}{\numberline {2}Конструкторская часть}{12}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Требования к программному обеспечению}{12}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Общий алгоритм решения задачи}{12}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Трассировка лучей}{13}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Свет}{13}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Наблюдатель и сцена}{14}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Лучи}{14}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Сферы}{14}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Пересечение луча и сферы}{15}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}Нормали сферы}{16}{subsection.2.3.6}%
-\contentsline {subsection}{\numberline {2.3.7}Диффузное отражение}{16}{subsection.2.3.7}%
-\contentsline {subsection}{\numberline {2.3.8}Зеркальное отражение}{18}{subsection.2.3.8}%
-\contentsline {subsection}{\numberline {2.3.9}Тени}{21}{subsection.2.3.9}%
-\contentsline {subsection}{\numberline {2.3.10}Отражения}{21}{subsection.2.3.10}%
-\contentsline {section}{\numberline {2.4}Связь различных текстурных карт с данными о нормали}{22}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Карты высот (англ. height maps)}{22}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Карты нормалей (англ. normal maps)}{23}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Карта параллактического отображения (англ. parallax map)}{24}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Наложение текстуры на поверхность}{25}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Схема алгоритма трассировки луча}{27}{section.2.6}%
+\contentsline {section}{\numberline {1.1}Текстура, наложение текстур}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Представление объектов. Анализ и выбор алгоритма удаления невидимых линий и поверхностей}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Алгоритм буфера глубины}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Алгоритм Робертса}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Алгоритм обратной трассировки лучей}{8}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Выбор модели освещения}{10}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Конструкторская часть}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Требования к программному обеспечению. Общий алгоритм решения задачи}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Трассировка лучей}{12}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Свет}{12}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Наблюдатель и сцена}{13}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Лучи}{13}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Сферы}{13}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Пересечение луча и сферы}{14}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Нормали сферы}{15}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Диффузное отражение}{15}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.8}Зеркальное отражение}{17}{subsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.2.9}Тени}{20}{subsection.2.2.9}%
+\contentsline {subsection}{\numberline {2.2.10}Отражения}{20}{subsection.2.2.10}%
+\contentsline {section}{\numberline {2.3}Связь различных текстурных карт с данными о нормали}{21}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Карты высот (англ. height maps)}{21}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Карты нормалей (англ. normal maps)}{22}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Карта параллактического отображения (англ. parallax map)}{23}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Наложение текстуры на поверхность}{24}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Схема алгоритма трассировки луча}{26}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Технологическая часть}{28}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Средства реализации}{28}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Диаграмма классов}{28}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Реализация алгоритмов}{29}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Интерфейс программного обеспечения}{38}{section.3.4}%
+\contentsline {section}{\numberline {3.1}Средства реализации. Диаграмма классов}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Реализация алгоритмов}{29}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Интерфейс программного обеспечения}{38}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Исследовательская часть}{40}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Технические характеристики}{40}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Результаты работы ПО}{40}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Анализ наложения текстур}{43}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Анализ производительности}{45}{section.4.4}%
-\contentsline {chapter}{Список использованных источников}{48}{Item.22}%
+\selectlanguage *[]{english}
+\selectlanguage *[]{english}
+\selectlanguage *[]{english}
+\selectlanguage *[]{english}
 \selectlanguage *[]{english}
 \selectlanguage *[]{english}
 \selectlanguage *[]{english}
@@ -51,4 +49,8 @@
 \selectlanguage *[]{russian}
 \selectlanguage *[]{russian}
 \selectlanguage *[]{russian}
-\contentsline {chapter}{Приложение А}{49}{chapter*.26}%
+\selectlanguage *[]{russian}
+\selectlanguage *[]{russian}
+\selectlanguage *[]{russian}
+\selectlanguage *[]{russian}
+\contentsline {chapter}{Приложение А}{50}{chapter*.27}%
