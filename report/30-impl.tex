@@ -18,7 +18,7 @@
 	\centering
 	\begin{tabular}{p{1\linewidth}}
 		\centering
-		\includegraphics[width=1.0\linewidth]{include/3-1.drawio.png}
+		\includegraphics[width=0.9\linewidth]{include/3-1.drawio.png}
 		\captionof{figure}{UML-диаграмма классов реализуемого ПО}
 		\label{img:3-1}
 	\end{tabular}
@@ -130,7 +130,7 @@ public static class LightService
 }
 \end{lstlisting}
 
-Осталось рассмотреть класс который отвечает за саму трассировку. Он так же должен выполнять учет текстуры, ведь при трассировке и так вычисляются нормали и достаточно эффективно сразу же вносить в них возмущения.
+Класс который отвечает за трассировку. Он так же выполняет учет текстуры, поскольку при трассировке вычисляются нормали и удобно сразу же вносить в них возмущения.
 
 \begin{lstlisting}[caption={Класс RayTracingService}, label={lst:3-5}]
 public static class RayTracingService
@@ -390,7 +390,7 @@ public static class RayTracingService
 	\centering
 	\begin{tabular}{p{1\linewidth}}
 		\centering
-		\includegraphics[width=1.0\linewidth]{include/3-2.png}
+		\includegraphics[width=0.85\linewidth]{include/3-2.png}
 		\captionof{figure}{Интерфейс ПО}
 		\label{img:3-2}
 	\end{tabular}
